@@ -431,7 +431,7 @@ PAGES.push({
   html: `<div class="pg"><div class="pg-head"><span class="badge">النشاط 1</span><h2>صمّم صاروخ المستقبل 🚀</h2>
  <span class="habit">الإبداع والابتكار</span></div>
 <div class="body">
- <div class="col side" style="overflow:auto">
+ <div class="col side">
    ${say('لا أستطيع الوصول إلى الكوكب الأزرق، صاروخي قديم جداً! أحتاج صاروخاً <b>لم يصنعه أحد من قبل</b>. هل تستطيع مساعدتي؟')}
    <div id="t1"></div>
  </div>
@@ -451,7 +451,7 @@ PAGES.push({
     const cfg = { nose: 0, fin: 0, eng: 0, win: 0, body: '#ff6b81', noseC: '#ffc83b', winC: '#42e3b4', solar: false, arm: false, fire: false };
     const stage = $('#s1', r), fb = $('#f1', r);
     const holder = document.createElement('div');
-    holder.style.cssText = 'width:46%;height:96%;position:relative;pointer-events:none';
+    holder.style.cssText = 'width:60%;max-width:140px;height:95%;position:relative;pointer-events:none';
     stage.appendChild(holder);
     const draw = () => holder.innerHTML = rocketSVG(cfg);
     draw();
@@ -500,7 +500,7 @@ PAGES.push({
   html: `<div class="pg dark"><div class="pg-head"><span class="badge">النشاط 2</span><h2>ابنِ كوكبًا جديدًا 🪐</h2>
  <span class="habit">الإبداع والابتكار</span></div>
 <div class="body">
- <div class="col side" style="overflow:auto">
+ <div class="col side">
    ${say('وجدت هذا الكوكب في المجرة، لكنه <b>فارغ تمامًا</b>. أريدك أن تجعل الحياة فيه جميلة وملونة!')}
    <div id="t2"></div>
    <div class="mini">اضغط عنصرًا ثم اضغط الكوكب لوضعه • اسحبه لتحريكه • مرتان للحذف</div>
@@ -516,7 +516,7 @@ PAGES.push({
   init(r) {
     const stage = $('#s2', r), fb = $('#f2', r);
     const planet = document.createElement('div');
-    planet.style.cssText = 'position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:64%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#a7f3d0,#10b981 60%,#047857);box-shadow:0 0 60px rgba(52,211,153,0.35);pointer-events:none';
+    planet.style.cssText = 'position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:60%;max-width:140px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#a7f3d0,#10b981 60%,#047857);box-shadow:0 0 60px rgba(52,211,153,0.35);pointer-events:none';
     stage.appendChild(planet);
     let tool = null;
     const groups = { 'الطبيعة 🌿': ['🌊', '⛰️', '🌲', '🌺', '💧', '🌾'], 'المباني 🏠': ['🏠', '🏰', '🏙️', '⛺'], 'الكائنات 👾': ['🤖', '👽', '🐙', '🦄', '🐣'], 'السماء ✨': ['🌙', '☁️', '🌈', '⭐', '☄️'] };
@@ -593,7 +593,7 @@ PAGES.push({
    <div class="row" id="rd4"></div>
    <div class="fb" id="f4"></div>
  </div>
- <div class="col main"><div class="stage" id="s4"><div class="grid3" id="g4"></div></div></div>
+ <div class="col main"><div class="stage" id="s4" style="display:flex;align-items:center;justify-content:center;padding:6px"><div class="grid3" id="g4"></div></div></div>
 </div></div>`,
   init(r) {
     const g = $('#g4', r), fb = $('#f4', r);
@@ -687,10 +687,10 @@ PAGES.push({
    <button class="btn" id="done6">أخبرت غيث بفكرتي</button>
    <div class="fb" id="f6"></div>
  </div>
- <div class="col main"><div class="stage" id="s6">
-   <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(50px, 8vw, 80px);gap:10px;pointer-events:none">👽<span style="font-size:clamp(36px, 6vw, 60px)">🛸</span><span style="font-size:clamp(28px, 4vw, 42px)">💨</span></div>
-   <div class="grid3" id="g6" style="align-content:end;position:absolute;inset:auto 0 0 0;height:auto"></div>
- </div></div>
+ <div class="col main"><div class="stage" id="s6" style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:6px">
+     <div style="font-size:clamp(32px,6vw,48px);text-align:center;line-height:1;margin-top:2px">👽 <span style="font-size:clamp(24px,4.5vw,36px)">🛸</span></div>
+     <div class="grid3" id="g6"></div>
+   </div></div>
 </div></div>`,
   init(r) {
     const g = $('#g6', r), fb = $('#f6', r); let picked = null;
@@ -716,7 +716,7 @@ PAGES.push({
   html: `<div class="pg dark"><div class="pg-head"><span class="badge">النشاط 7</span><h2>مهمة الإنقاذ الكبرى 📡</h2>
  <span class="habit">الإبداع + المرونة + المثابرة</span></div>
 <div class="body">
- <div class="col side" style="overflow:auto">
+ <div class="col side">
    ${say('<b>انقطع الاتصال بمحطة الفضاء!</b> ابتكر جهاز إرسال: اختر مصدر طاقة، وهوائيًا، وصندوقًا… ثم شغّله.')}
    <div id="t7"></div>
    <div class="row"><button class="btn mint" id="run7">▶ تشغيل الجهاز</button></div>
@@ -813,7 +813,7 @@ PAGES.push({
    <div class="row" id="rd9"></div>
    <div class="fb" id="f9"></div>
  </div>
- <div class="col main"><div class="stage" id="s9"><div class="grid3" id="g9"></div></div></div>
+ <div class="col main"><div class="stage" id="s9" style="display:flex;align-items:center;justify-content:center;padding:6px"><div class="grid3" id="g9"></div></div></div>
 </div></div>`,
   init(r) {
     const g = $('#g9', r), fb = $('#f9', r); let round = 1;
@@ -847,7 +847,7 @@ PAGES.push({
   html: `<div class="pg cream"><div class="pg-head"><span class="badge">النشاط 10</span><h2>زيّن صاروخك 🎨</h2>
  <span class="habit">الإبداع والابتكار</span></div>
 <div class="body">
- <div class="col side" style="overflow:auto">
+ <div class="col side">
    ${say('هذا صاروخ أبيض… <b>اجعله مختلفًا عن صواريخ أصدقائك.</b> لا يوجد تصميم صحيح وآخر خاطئ!')}
    <div id="t10"></div>
    <button class="btn" id="done10">انتهيت من التزيين</button>
@@ -858,7 +858,7 @@ PAGES.push({
   init(r) {
     const stage = $('#s10', r), fb = $('#f10', r);
     const cfg = { nose: 1, fin: 2, eng: 1, win: 0, body: '#ffffff', noseC: '#ffffff', winC: '#ffffff' };
-    const holder = document.createElement('div'); holder.style.cssText = 'width:42%;height:96%;pointer-events:none'; stage.appendChild(holder);
+    const holder = document.createElement('div'); holder.style.cssText = 'width:60%;max-width:130px;height:95%;pointer-events:none'; stage.appendChild(holder);
     const draw = () => holder.innerHTML = rocketSVG(cfg); draw();
     let tool = null; const t = $('#t10', r);
     const cw = document.createElement('div'); cw.className = 'tools'; cw.innerHTML = '<div class="lbl">تلوين الصاروخ</div>';
@@ -922,10 +922,10 @@ PAGES.push({
    <div class="row" id="rd12"></div>
    <div class="fb" id="f12"></div>
  </div>
- <div class="col main"><div class="stage" id="s12">
-   <div id="alien" style="position:absolute;left:50%;top:18%;transform:translateX(-50%);font-size:clamp(54px, 7vw, 82px)">👾</div>
-   <div class="grid3" id="g12" style="position:absolute;inset:auto 0 0 0;height:auto"></div>
- </div></div>
+ <div class="col main"><div class="stage" id="s12" style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:6px">
+     <div id="alien" style="font-size:clamp(38px,7vw,56px);line-height:1;margin-top:2px">👾</div>
+     <div class="grid3" id="g12"></div>
+   </div></div>
 </div></div>`,
   init(r) {
     const g = $('#g12', r), fb = $('#f12', r), al = $('#alien', r); let done = false, n = 0;
@@ -969,7 +969,7 @@ PAGES.push({
   init(r) {
     const stage = $('#s13', r), fb = $('#f13', r);
     const p = document.createElement('div');
-    p.style.cssText = 'position:absolute;left:50%;bottom:-38%;transform:translateX(-50%);width:110%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 20%,#fed7aa,#f97316 55%,#c2410c);pointer-events:none';
+    p.style.cssText = 'position:absolute;left:50%;bottom:-30%;transform:translateX(-50%);width:105%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 20%,#fed7aa,#f97316 55%,#c2410c);pointer-events:none';
     stage.appendChild(p);
     let tool = null;
     $('#t13', r).append(chipRow(['🌲', '🏠', '🏞️', '⛰️', '🌙'], v => tool = v, 'العناصر — اضغط ثم ضعها على الكوكب'));
@@ -993,11 +993,11 @@ PAGES.push({
    <div class="fb" id="f14"></div>
  </div>
  <div class="col main"><div class="stage" id="s14">
-   <div style="position:absolute;left:6%;top:72%;font-size:clamp(32px, 4.5vw, 44px)">🐰</div>
-   <div style="position:absolute;left:84%;top:16%;font-size:clamp(32px, 4.5vw, 44px)">🚀</div>
-   <div style="position:absolute;left:46%;top:46%;font-size:clamp(36px, 5.5vw, 52px)">🪨</div>
-   <div style="position:absolute;left:8%;top:78%;width:80%;height:3px;background:repeating-linear-gradient(90deg,#94a3b8 0 12px,transparent 12px 24px);transform:rotate(-32deg);transform-origin:left"></div>
-   <canvas id="cv14" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+   <div style="position:absolute;left:6%;top:68%;font-size:clamp(28px,4vw,38px);z-index:2;pointer-events:none">🐰</div>
+   <div style="position:absolute;left:82%;top:12%;font-size:clamp(28px,4vw,38px);z-index:2;pointer-events:none">🚀</div>
+   <div style="position:absolute;left:45%;top:42%;font-size:clamp(32px,5vw,46px);z-index:2;pointer-events:none">🪨</div>
+   <div style="position:absolute;left:8%;top:75%;width:80%;height:3px;background:repeating-linear-gradient(90deg,#94a3b8 0 10px,transparent 10px 20px);transform:rotate(-30deg);transform-origin:left;pointer-events:none"></div>
+   <canvas id="cv14" style="position:absolute;inset:0;width:100%;height:100%;z-index:3"></canvas>
  </div></div>
 </div></div>`,
   init(r) {
@@ -1063,21 +1063,21 @@ PAGES.push({
   html: `<div class="pg cream"><div class="pg-head"><span class="badge">النشاط 16</span><h2>حفلة الفضاء 🎉</h2>
  <span class="habit">الإبداع والابتكار</span></div>
 <div class="body">
- <div class="col side" style="overflow:auto">
+ <div class="col side">
    ${say('انتهت الرحلة بنجاح! صمّم <b>بطاقة دعوة</b> لحفلة الفضاء: اختر اللون والزينة والكعكة والشخصيات.')}
    <div id="t16"></div>
    <input type="text" id="party" placeholder="نص الدعوة: أدعوكم إلى…">
    <div class="row"><button class="btn" id="done16">بطاقتي جاهزة</button><button class="btn ghost" id="print16">🖨️ اطبع البطاقة</button></div>
    <div class="fb" id="f16"></div>
  </div>
- <div class="col main"><div class="stage" id="s16" style="padding:8px;display:flex">
-   <div id="card16" style="flex:1;position:relative;border-radius:16px;background:#38cbfd;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;overflow:hidden;box-shadow:0 5px 14px rgba(0,0,0,0.1)">
-     <div style="font-family:'Baloo Bhaijaan 2';font-size:clamp(20px, 3.2vw, 28px);color:#fff;text-shadow:0 2px 5px rgba(0,0,0,0.2)">🎊 حفلة في الفضاء 🎊</div>
-     <div id="cake16" style="font-size:clamp(40px, 5.5vw, 60px)">🎂</div>
-     <div id="chars16" style="font-size:clamp(26px, 3.5vw, 36px)">🧑‍🚀👽🤖</div>
-     <div id="txt16" style="background:#fff;border-radius:10px;padding:5px 12px;font-weight:800;max-width:90%;text-align:center;color:var(--ink);box-shadow:0 3px 8px rgba(0,0,0,0.08)">أدعوكم إلى حفلتي المميزة على القمر!</div>
+ <div class="col main"><div class="stage" id="s16" style="padding:6px;display:flex">
+   <div id="card16" style="flex:1;position:relative;border-radius:14px;background:#38cbfd;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.1);padding:6px">
+     <div style="font-family:'Baloo Bhaijaan 2';font-size:clamp(16px,2.8vw,24px);color:#fff;text-shadow:0 2px 5px rgba(0,0,0,.2)">🎊 حفلة في الفضاء 🎊</div>
+     <div id="cake16" style="font-size:clamp(32px,5vw,50px)">🎂</div>
+     <div id="chars16" style="font-size:clamp(22px,3.2vw,30px)">🧑‍🚀👽🤖</div>
+     <div id="txt16" style="background:#fff;border-radius:8px;padding:4px 10px;font-weight:800;font-size:clamp(11px,1.2vw,14px);max-width:92%;text-align:center;color:var(--ink)">أدعوكم إلى حفلتي على القمر!</div>
    </div>
- </div></div>
+ </div></div></div>
 </div></div>`,
   init(r) {
     const card = $('#card16', r), fb = $('#f16', r), t = $('#t16', r);

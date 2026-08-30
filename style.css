@@ -1,184 +1,894 @@
 ﻿/* =====================================================
-   مجلة إنقاذ الكوكب الأزرق — ملف التنسيقات style.css
+   مجلة إنقاذ الكوكب الأزرق — ملف التنسيقات المتجاوب الشامل
+   style.css
    ===================================================== */
 
 :root {
-  --ink: #1e295b; --deep: #0f1738; --sky: #4cd5ff; --sky-dark: #1dafe4;
-  --sun: #ffc83b; --sun-shadow: #e09f00; --coral: #ff6b81; --coral-shadow: #d9435b;
-  --mint: #42e3b4; --mint-shadow: #21b88c; --cream: #fff8eb;
-  --purple: #8b5cf6; --purple-dark: #6d28d9; --pink: #ff85c0; --orange: #ff9f43;
-  --card-bg: rgba(255,255,255,0.95); --shadow: 0 16px 36px rgba(15,23,56,0.3); --r: 24px;
+  --ink: #1e295b;
+  --deep: #0f1738;
+  --sky: #4cd5ff;
+  --sky-dark: #1dafe4;
+  --sun: #ffc83b;
+  --sun-shadow: #e09f00;
+  --coral: #ff6b81;
+  --coral-shadow: #d9435b;
+  --mint: #42e3b4;
+  --mint-shadow: #21b88c;
+  --cream: #fff8eb;
+  --purple: #8b5cf6;
+  --purple-dark: #6d28d9;
+  --pink: #ff85c0;
+  --orange: #ff9f43;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --shadow: 0 12px 30px rgba(15, 23, 56, 0.25);
+  --r: 20px;
 }
-* { box-sizing:border-box; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
-html,body { min-height:100vh; min-height:100dvh; margin:0; padding:0; background:#0f172a; }
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #0f172a;
+  overflow: hidden;
+}
+
 body {
-  font-family:'Tajawal',system-ui,-apple-system,sans-serif; color:var(--ink);
-  background: radial-gradient(1200px 800px at 80% -10%,#312e81 0%,transparent 65%),
-              radial-gradient(1000px 700px at 10% 110%,#4c1d95 0%,transparent 60%),
-              radial-gradient(800px 500px at 50% 50%,#1e1b4b 0%,#0f172a 100%);
-  overflow-x:hidden; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 800px at 80% -10%, #312e81 0%, transparent 65%),
+    radial-gradient(1000px 700px at 10% 110%, #4c1d95 0%, transparent 60%),
+    radial-gradient(800px 500px at 50% 50%, #1e1b4b 0%, #0f172a 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+/* خلفية النجوم المتحركة */
 body::before {
-  content:""; position:fixed; inset:0; pointer-events:none; opacity:0.75;
-  background-image: radial-gradient(3px 3px at 15% 25%,#fff,transparent), radial-gradient(4px 4px at 75% 15%,#ffeaa7,transparent),
-    radial-gradient(3px 3px at 35% 75%,#fff,transparent), radial-gradient(4px 4px at 65% 65%,#74b9ff,transparent),
-    radial-gradient(3px 3px at 85% 45%,#fd79a8,transparent), radial-gradient(4px 4px at 45% 35%,#55efc4,transparent),
-    radial-gradient(3px 3px at 25% 85%,#ffeaa7,transparent), radial-gradient(5px 5px at 90% 90%,#fff,transparent);
-  animation:floatStars 6s ease-in-out infinite alternate;
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.75;
+  background-image:
+    radial-gradient(3px 3px at 15% 25%, #fff, transparent),
+    radial-gradient(4px 4px at 75% 15%, #ffeaa7, transparent),
+    radial-gradient(3px 3px at 35% 75%, #fff, transparent),
+    radial-gradient(4px 4px at 65% 65%, #74b9ff, transparent),
+    radial-gradient(3px 3px at 85% 45%, #fd79a8, transparent),
+    radial-gradient(4px 4px at 45% 35%, #55efc4, transparent),
+    radial-gradient(3px 3px at 25% 85%, #ffeaa7, transparent),
+    radial-gradient(5px 5px at 90% 90%, #fff, transparent);
+  animation: floatStars 6s ease-in-out infinite alternate;
 }
-@keyframes floatStars { 0%{transform:translateY(0) scale(1);opacity:.6} 50%{transform:translateY(-8px) scale(1.05);opacity:.9} 100%{transform:translateY(0) scale(1);opacity:.6} }
-.bg-cloud { position:fixed; pointer-events:none; opacity:.12; font-size:clamp(70px,10vw,130px); z-index:0; animation:floatCloud 22s linear infinite; }
-.c1 { top:5%; right:-100px; animation-duration:28s; }
-.c2 { bottom:8%; left:-100px; animation-duration:34s; animation-delay:-12s; }
-@keyframes floatCloud { from{transform:translateX(0)} to{transform:translateX(-120vw)} }
-
-/* Shell */
-.shell { position:relative; width:100%; max-width:1240px; height:var(--vvh,100svh); display:flex; flex-direction:column; align-items:center; justify-content:space-between; gap:6px; padding:8px 12px; z-index:1; }
-
-/* Name Modal */
-.name-modal { position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; background:rgba(15,23,56,0.75); backdrop-filter:blur(10px); padding:20px; }
-.name-modal-box { background:#fff; border-radius:24px; padding:28px 24px; width:100%; max-width:420px; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,.4); display:flex; flex-direction:column; gap:14px; align-items:center; }
-.name-modal-box .em { font-size:52px; line-height:1; }
-.name-modal-box h3 { font-family:'Baloo Bhaijaan 2'; font-weight:800; font-size:20px; color:var(--ink); margin:0; }
-.name-modal-box p  { font-size:14px; font-weight:700; color:#64748b; margin:0; }
-.name-modal-box input[type=text] { width:100%; font-size:16px; font-weight:700; text-align:center; border:2.5px solid #e2e8f0; border-radius:14px; padding:10px 14px; min-height:48px; outline:0; background:#f8fafc; color:var(--ink); font-family:'Tajawal'; }
-.name-modal-box input[type=text]:focus { border-color:var(--purple-dark); background:#fff; box-shadow:0 0 0 3px rgba(109,40,217,.15); }
-.name-modal-box .modal-btns { display:flex; gap:8px; width:100%; }
-.name-modal-box .modal-btns .btn { flex:1; min-height:46px; font-size:15px; }
-
-/* HUD */
-.hud { width:100%; max-width:1180px; display:flex; align-items:center; gap:10px; background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.12)); border:2px solid rgba(255,255,255,.35); border-radius:999px; padding:6px 14px; backdrop-filter:blur(12px); color:#fff; box-shadow:0 6px 20px rgba(0,0,0,.2); flex:none; }
-.hud h1 { font-family:'Baloo Bhaijaan 2'; font-size:clamp(12px,1.6vw,19px); margin:0; font-weight:800; white-space:nowrap; color:#fffae6; text-shadow:0 2px 8px rgba(0,0,0,.4); }
-.track { flex:1; display:flex; align-items:center; gap:2px; height:22px; overflow:hidden; }
-.track .link { flex:1; height:3px; background:rgba(255,255,255,.25); border-radius:99px; }
-.track .dot { width:clamp(12px,1.7vw,20px); height:clamp(12px,1.7vw,20px); flex:none; transition:transform .3s; }
-.track .dot svg { width:100%; height:100%; display:block; filter:grayscale(1) opacity(.35); transition:.35s ease-out; }
-.track .dot.on svg { filter:drop-shadow(0 0 6px #ffea00); transform:scale(1.3) rotate(12deg); }
-.count { font-family:'Baloo Bhaijaan 2'; font-weight:800; font-size:clamp(13px,1.5vw,17px); white-space:nowrap; background:linear-gradient(135deg,#fffae6,#ffe066); color:#5c3d00; padding:2px 10px; border-radius:999px; box-shadow:0 3px 0 #b38000; }
-
-/* Book */
-.book-wrap { width:100%; max-width:1180px; flex:1; min-height:0; position:relative; perspective:2400px; }
-.book { position:absolute; inset:0; transform-style:preserve-3d; }
-.sheet { position:absolute; inset:0; border-radius:var(--r); overflow:hidden; transform-origin:right center; backface-visibility:hidden; transition:transform .85s cubic-bezier(.34,1.2,.64,1); box-shadow:var(--shadow); background:var(--sky); pointer-events:none; border:4px solid rgba(255,255,255,.85); }
-.sheet.turned { transform:rotateY(180deg); pointer-events:none; }
-.sheet.live   { pointer-events:auto; }
-.sheet::after { content:""; position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .4s; background:linear-gradient(to left,rgba(0,0,0,.3),transparent 45%); }
-.sheet.turning::after { opacity:1; }
-
-/* Pages */
-.pg { position:absolute; inset:0; display:flex; flex-direction:column; padding:clamp(10px,2vw,16px); background:radial-gradient(800px 500px at 85% 10%,#89e2ff 0%,transparent 65%),linear-gradient(180deg,#38cbfd 0%,#11a3e3 100%); color:var(--ink); overflow-y:auto; -webkit-overflow-scrolling:touch; }
-.pg.dark  { background:radial-gradient(900px 500px at 70% 0%,#4f46e5 0%,transparent 65%),linear-gradient(180deg,#2e1065 0%,#1e1b4b 100%); color:#fff; }
-.pg.cream { background:radial-gradient(700px 420px at 20% 0%,#fff 0%,transparent 60%),linear-gradient(180deg,#fff9ee 0%,#ffeaa7 100%); color:var(--ink); }
-.pg-head { display:flex; align-items:center; gap:8px; flex:none; background:rgba(255,255,255,.38); padding:5px 12px; border-radius:14px; backdrop-filter:blur(8px); border:2px solid rgba(255,255,255,.6); }
-.pg.dark .pg-head { background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.2); }
-.badge { font-family:'Baloo Bhaijaan 2'; font-weight:800; color:#4a2c00; background:linear-gradient(135deg,#ffe066,#ffc107); border-radius:10px; padding:2px 10px; font-size:clamp(11px,1.3vw,14px); box-shadow:0 3px 0 #cc9600; white-space:nowrap; }
-.pg h2 { font-family:'Baloo Bhaijaan 2'; font-weight:800; font-size:clamp(15px,2.2vw,26px); margin:0; color:#fff; text-shadow:0 2px 6px rgba(10,25,70,.4); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.pg.cream h2 { color:var(--ink); text-shadow:none; }
-.pg .habit { margin-inline-start:auto; background:#fff; color:var(--purple-dark); font-weight:800; border-radius:999px; padding:3px 12px; font-size:clamp(10px,1.1vw,12px); white-space:nowrap; box-shadow:0 3px 8px rgba(0,0,0,.08); border:1.5px solid #e9d5ff; }
-.body { flex:1; display:flex; gap:10px; min-height:0; margin-top:8px; }
-.col  { display:flex; flex-direction:column; gap:8px; min-height:0; }
-.col.side { width:32%; flex:none; }
-.col.main { flex:1; min-width:0; }
-
-/* Ghaith */
-.say { display:flex; gap:8px; align-items:flex-start; background:#fff; border-radius:16px; padding:8px 12px; box-shadow:0 6px 16px rgba(15,23,56,.08); font-size:clamp(11.5px,1.2vw,14.5px); line-height:1.45; font-weight:700; color:var(--ink); border:2.5px solid #e2e8f0; }
-.say .av { width:clamp(34px,3.8vw,48px); height:clamp(34px,3.8vw,48px); flex:none; filter:drop-shadow(0 3px 5px rgba(0,0,0,.12)); animation:bounceAvatar 3s ease-in-out infinite alternate; }
-@keyframes bounceAvatar { 0%{transform:translateY(0)} 100%{transform:translateY(-4px)} }
-.say b { color:var(--purple-dark); font-weight:900; }
-.mini { font-size:clamp(10.5px,1.1vw,12.5px); color:#2d3748; line-height:1.45; background:rgba(255,255,255,.9); border-radius:12px; padding:6px 10px; font-weight:700; border:1.5px solid rgba(255,255,255,.9); }
-.mini u { text-decoration:none; font-weight:800; color:var(--purple-dark); background:#f3e8ff; padding:1px 5px; border-radius:5px; }
-
-/* Stage */
-.stage { flex:1; position:relative; background:#fff; border-radius:18px; overflow:hidden; min-height:150px; box-shadow:inset 0 0 0 2.5px #e2e8f0, 0 6px 14px rgba(0,0,0,.05); touch-action:none; }
-.stage.night { background:linear-gradient(180deg,#1e1b4b 0%,#0f172a 100%); box-shadow:inset 0 0 0 2.5px rgba(255,255,255,.2); }
-
-/* Tools */
-.tools { display:flex; flex-wrap:wrap; gap:5px; background:rgba(255,255,255,.95); border-radius:14px; padding:6px 8px; border:2px solid #e2e8f0; box-shadow:0 4px 10px rgba(0,0,0,.04); }
-.tools .lbl { width:100%; font-size:11px; font-weight:800; color:var(--purple-dark); }
-.chip { border:2px solid #e2e8f0; background:#f8fafc; border-radius:10px; padding:3px 6px; cursor:pointer; font-size:clamp(16px,2vw,22px); line-height:1; display:flex; align-items:center; justify-content:center; min-width:36px; min-height:36px; transition:transform .15s; }
-.chip:active { transform:scale(.92); }
-.chip.on { border-color:var(--purple-dark); background:#f3e8ff; box-shadow:0 0 0 3px rgba(139,92,246,.25); }
-.chip svg { width:24px; height:24px; display:block; }
-.sw { width:26px; height:26px; border-radius:50%; border:2.5px solid #fff; cursor:pointer; box-shadow:0 2px 5px rgba(0,0,0,.18); }
-.sw.on { outline:3px solid var(--purple-dark); transform:scale(1.15); }
-
-/* Buttons */
-.btn { font-family:'Baloo Bhaijaan 2'; font-weight:800; font-size:clamp(12.5px,1.3vw,15px); border:0; cursor:pointer; color:#3b2500; background:linear-gradient(180deg,#ffdf6d 0%,#ffc107 100%); border-radius:12px; padding:8px 14px; min-height:42px; box-shadow:0 4px 0 var(--sun-shadow),0 6px 12px rgba(0,0,0,.12); transition:all .12s ease-out; display:inline-flex; align-items:center; justify-content:center; gap:5px; user-select:none; white-space:nowrap; }
-.btn:active { transform:translateY(3px); box-shadow:0 1px 0 var(--sun-shadow); }
-.btn.ghost { background:linear-gradient(180deg,#fff 0%,#f1f5f9 100%); color:var(--ink); box-shadow:0 4px 0 #cbd5e1,0 6px 12px rgba(0,0,0,.06); }
-.btn.mint  { background:linear-gradient(180deg,#6ee7b7 0%,#10b981 100%); color:#022c22; box-shadow:0 4px 0 var(--mint-shadow),0 6px 12px rgba(0,0,0,.12); }
-.btn.coral { background:linear-gradient(180deg,#ff8796 0%,#ff4757 100%); color:#fff; box-shadow:0 4px 0 var(--coral-shadow),0 6px 12px rgba(0,0,0,.12); }
-.btn[disabled] { opacity:.55; cursor:not-allowed; transform:none !important; box-shadow:none !important; }
-.row { display:flex; gap:5px; flex-wrap:wrap; align-items:center; }
-input[type=text] { font-family:'Tajawal'; font-size:16px; font-weight:700; border:2px solid #cbd5e1; border-radius:10px; padding:6px 10px; outline:0; min-width:120px; min-height:42px; }
-input[type=text]:focus { border-color:var(--purple-dark); }
-.fb { background:#fff; border-right:5px solid var(--mint); border-radius:12px; padding:8px 12px; font-size:13px; font-weight:700; line-height:1.45; display:none; box-shadow:0 5px 14px rgba(0,0,0,.08); color:var(--ink); }
-.fb.show { display:block; animation:popBounce .35s ease-out; }
-.fb.warn { border-right-color:var(--sun); background:#fffdf0; }
-@keyframes popBounce { from{transform:scale(.93);opacity:0} to{transform:scale(1);opacity:1} }
-.item { position:absolute; font-size:clamp(30px,5vw,42px); cursor:grab; user-select:none; touch-action:none; line-height:1; filter:drop-shadow(0 3px 5px rgba(0,0,0,.25)); }
-.item.drag { cursor:grabbing; z-index:99; transform:scale(1.2); }
-
-/* Nav */
-.nav { display:flex; align-items:center; justify-content:space-between; width:100%; max-width:500px; gap:10px; flex:none; background:rgba(255,255,255,.18); padding:4px 12px; border-radius:999px; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,.3); }
-.nav .btn { flex:1; min-width:0; font-size:clamp(13px,1.4vw,16px); }
-.pgno { color:#fff; font-family:'Baloo Bhaijaan 2'; font-weight:800; font-size:15px; min-width:60px; text-align:center; text-shadow:0 2px 4px rgba(0,0,0,.4); }
-.hint { color:#e2e8f0; font-size:11px; font-weight:700; text-align:center; opacity:.9; }
-
-/* Cover */
-.cover { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:10px; height:100%; padding:10px 4px; }
-.cover h1 { font-family:'Baloo Bhaijaan 2'; font-size:clamp(24px,5vw,50px); color:#fff; margin:0; line-height:1.15; text-shadow:0 5px 0 rgba(10,25,70,.4),0 0 16px rgba(255,255,255,.25); }
-.cover .sub { color:#ffe066; font-weight:900; font-size:clamp(13px,1.8vw,19px); background:rgba(255,255,255,.15); padding:4px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.3); }
-.cover .meta { display:flex; gap:6px; flex-wrap:wrap; justify-content:center; }
-.tag { background:rgba(255,255,255,.2); border:1.5px solid rgba(255,255,255,.4); color:#fff; border-radius:999px; padding:3px 12px; font-size:clamp(10.5px,1.2vw,13px); font-weight:800; }
-.float { animation:floatAnim 3.5s ease-in-out infinite; }
-@keyframes floatAnim { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-10px) rotate(3deg)} }
-.burst { position:fixed; inset:0; pointer-events:none; display:flex; align-items:center; justify-content:center; z-index:999; }
-.burst .s { font-size:clamp(65px,12vw,100px); animation:burstAnim 1.2s cubic-bezier(.175,.885,.32,1.275) forwards; filter:drop-shadow(0 0 20px #ffea00); }
-@keyframes burstAnim { 0%{transform:scale(.1) rotate(-45deg);opacity:0} 35%{transform:scale(1.3) rotate(12deg);opacity:1} 100%{transform:scale(.9) translateY(-140px);opacity:0} }
-canvas { touch-action:none; display:block; }
-.center { display:flex; align-items:center; justify-content:center; }
-.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:8px; height:100%; }
-.card { background:#fff; border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; cursor:pointer; font-weight:800; font-size:clamp(11px,1.2vw,14px); color:var(--ink); box-shadow:0 5px 0 #cbd5e1,0 6px 12px rgba(0,0,0,.06); border:2px solid #f1f5f9; padding:8px 4px; text-align:center; }
-.card:active { transform:translateY(3px); box-shadow:0 1px 0 #cbd5e1; }
-.card .em { font-size:clamp(30px,4.5vw,46px); }
-.card.ok { background:#d1fae5; box-shadow:0 5px 0 #10b981; border-color:#34d399; }
-.card.no { background:#ffe4e6; box-shadow:0 5px 0 #f43f5e; border-color:#fb7185; animation:shake .4s; }
-@keyframes shake { 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
-.big { font-size:clamp(13px,1.5vw,18px); font-weight:800; color:#fff; text-align:center; }
-
-/* Mobile */
-@media (max-width:768px) {
-  .shell { padding:4px 6px; gap:4px; }
-  .hud { padding:4px 10px; gap:6px; }
-  .hud h1 { font-size:11.5px; }
-  .book-wrap { perspective:none; }
-  .sheet { border-width:2px; border-radius:16px; }
-  .body { flex-direction:column !important; gap:6px; overflow-y:auto; }
-  .col.side { width:100% !important; max-height:none; }
-  .col.main { width:100% !important; flex:1; min-height:180px; }
-  .tools { flex-wrap:nowrap !important; overflow-x:auto !important; scrollbar-width:none; -webkit-overflow-scrolling:touch; padding:4px 6px; }
-  .tools::-webkit-scrollbar { display:none; }
-  .tools .lbl { font-size:10px; width:auto; margin-inline-end:6px; flex:none; align-self:center; }
-  .chip { flex:none; min-width:34px; min-height:34px; font-size:18px; }
-  .grid3 { grid-template-columns:repeat(auto-fit,minmax(85px,1fr)) !important; gap:6px; padding:4px; }
-  .say { padding:6px 10px; }
-  .mini { padding:5px 8px; font-size:11px; }
-  .stage { min-height:160px; border-radius:14px; }
-  input[type=text] { min-width:100px; }
+@keyframes floatStars {
+  0%   { transform: translateY(0) scale(1); opacity: .6; }
+  50%  { transform: translateY(-8px) scale(1.05); opacity: .9; }
+  100% { transform: translateY(0) scale(1); opacity: .6; }
 }
-@media (max-height:580px) {
-  .hud { display:none; }
-  .shell { padding:2px 4px; }
-  .pg { padding:6px 8px; }
-  .pg-head { padding:2px 8px; }
-  .say .av { display:none; }
-  .stage { min-height:130px; }
+
+/* سحب عائمة */
+.bg-cloud {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0.10;
+  font-size: clamp(60px, 8vw, 120px);
+  z-index: 0;
+  animation: floatCloud 24s linear infinite;
 }
+.c1 { top: 4%; right: -80px; animation-duration: 26s; }
+.c2 { bottom: 6%; left: -80px; animation-duration: 32s; animation-delay: -10s; }
+@keyframes floatCloud {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-120vw); }
+}
+
+/* =====================================================
+   الهيكل العام (Responsive App Shell)
+   ===================================================== */
+.shell {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 100vh;
+  height: var(--vvh, 100dvh);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 8px 12px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* =====================================================
+   شريط العداد العلوي (HUD)
+   ===================================================== */
+.hud {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.12));
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 5px 12px;
+  backdrop-filter: blur(10px);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+.hud h1 {
+  font-family: 'Baloo Bhaijaan 2';
+  font-size: clamp(12px, 1.5vw, 18px);
+  margin: 0;
+  font-weight: 800;
+  white-space: nowrap;
+  color: #fffae6;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+.track {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 20px;
+  overflow: hidden;
+}
+.track .link {
+  flex: 1;
+  height: 2.5px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 99px;
+}
+.track .dot {
+  width: clamp(11px, 1.5vw, 18px);
+  height: clamp(11px, 1.5vw, 18px);
+  flex-shrink: 0;
+  transition: transform 0.25s;
+}
+.track .dot svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: grayscale(1) opacity(0.35);
+  transition: 0.3s ease-out;
+}
+.track .dot.on svg {
+  filter: drop-shadow(0 0 6px #ffea00);
+  transform: scale(1.25) rotate(10deg);
+}
+.count {
+  font-family: 'Baloo Bhaijaan 2';
+  font-weight: 800;
+  font-size: clamp(12px, 1.3vw, 16px);
+  white-space: nowrap;
+  background: linear-gradient(135deg, #fffae6, #ffe066);
+  color: #5c3d00;
+  padding: 2px 10px;
+  border-radius: 999px;
+  box-shadow: 0 2px 0 #b38000;
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   حاوية الكتاب (Book Wrapper & Sheets)
+   ===================================================== */
+.book-wrap {
+  width: 100%;
+  max-width: 1100px;
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  perspective: 2000px;
+}
+.book {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+.sheet {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r);
+  overflow: hidden;
+  transform-origin: right center;
+  backface-visibility: hidden;
+  transition: transform 0.8s cubic-bezier(0.34, 1.2, 0.64, 1);
+  box-shadow: var(--shadow);
+  background: var(--sky);
+  pointer-events: none;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+}
+.sheet.turned { transform: rotateY(180deg); pointer-events: none; }
+.sheet.live   { pointer-events: auto; }
+.sheet::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.25), transparent 40%);
+}
+.sheet.turning::after { opacity: 1; }
+
+/* =====================================================
+   محتوى الصفحة (Page Container & Scrolling)
+   ===================================================== */
+.pg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(8px, 1.8vw, 16px);
+  background:
+    radial-gradient(800px 500px at 85% 10%, #89e2ff 0%, transparent 65%),
+    linear-gradient(180deg, #38cbfd 0%, #11a3e3 100%);
+  color: var(--ink);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  gap: 8px;
+}
+.pg::-webkit-scrollbar { width: 4px; }
+.pg::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+
+.pg.dark {
+  background:
+    radial-gradient(900px 500px at 70% 0%, #4f46e5 0%, transparent 65%),
+    linear-gradient(180deg, #2e1065 0%, #1e1b4b 100%);
+  color: #fff;
+}
+.pg.cream {
+  background:
+    radial-gradient(700px 420px at 20% 0%, #fff 0%, transparent 60%),
+    linear-gradient(180deg, #fff9ee 0%, #ffeaa7 100%);
+  color: var(--ink);
+}
+
+/* ترويسة الصفحة */
+.pg-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.45);
+  padding: 4px 10px;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+}
+.pg.dark .pg-head {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+.badge {
+  font-family: 'Baloo Bhaijaan 2';
+  font-weight: 800;
+  color: #4a2c00;
+  background: linear-gradient(135deg, #ffe066, #ffc107);
+  border-radius: 8px;
+  padding: 2px 8px;
+  font-size: clamp(10px, 1.2vw, 13px);
+  box-shadow: 0 2px 0 #cc9600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.pg h2 {
+  font-family: 'Baloo Bhaijaan 2';
+  font-weight: 800;
+  font-size: clamp(14px, 1.8vw, 22px);
+  margin: 0;
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(10, 25, 70, 0.4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+.pg.cream h2 { color: var(--ink); text-shadow: none; }
+.pg .habit {
+  margin-inline-start: auto;
+  background: #fff;
+  color: var(--purple-dark);
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: clamp(9.5px, 1.1vw, 12px);
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9d5ff;
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   جسم النشاط (Body & Columns Layout)
+   ===================================================== */
+.body {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  min-height: 0;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+}
+.col.side {
+  width: 32%;
+  flex-shrink: 0;
+}
+.col.main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* =====================================================
+   مكونات الأنشطة (Components)
+   ===================================================== */
+
+/* شخصية غيث وفقاعة الكلام */
+.say {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 14px;
+  padding: 6px 10px;
+  box-shadow: 0 4px 12px rgba(15, 23, 56, 0.08);
+  font-size: clamp(11.5px, 1.2vw, 14px);
+  line-height: 1.4;
+  font-weight: 700;
+  color: var(--ink);
+  border: 2px solid #e2e8f0;
+  flex-shrink: 0;
+}
+.say .av {
+  width: clamp(32px, 3.5vw, 44px);
+  height: clamp(32px, 3.5vw, 44px);
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
+  animation: bounceAvatar 3s ease-in-out infinite alternate;
+}
+@keyframes bounceAvatar {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-3px); }
+}
+.say b { color: var(--purple-dark); font-weight: 900; }
+
+.mini {
+  font-size: clamp(10.5px, 1.1vw, 12px);
+  color: #2d3748;
+  line-height: 1.4;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 10px;
+  padding: 5px 8px;
+  font-weight: 700;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  flex-shrink: 0;
+}
+.mini u {
+  text-decoration: none;
+  font-weight: 800;
+  color: var(--purple-dark);
+  background: #f3e8ff;
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+/* المسرح / ساحة اللعب */
+.stage {
+  flex: 1;
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 160px;
+  box-shadow: inset 0 0 0 2px #e2e8f0, 0 4px 12px rgba(0, 0, 0, 0.05);
+  touch-action: none;
+}
+.stage.night {
+  background: linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+/* شريط الأدوات والخيارات */
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 5px 6px;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0;
+}
+.tools .lbl {
+  width: 100%;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--purple-dark);
+  margin-bottom: 2px;
+}
+.chip {
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 2px 5px;
+  cursor: pointer;
+  font-size: clamp(15px, 1.8vw, 20px);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+  transition: transform 0.15s;
+  flex-shrink: 0;
+}
+.chip:active { transform: scale(0.92); }
+.chip.on {
+  border-color: var(--purple-dark);
+  background: #f3e8ff;
+  box-shadow: 0 0 0 2.5px rgba(139, 92, 246, 0.25);
+}
+.chip svg { width: 22px; height: 22px; display: block; }
+
+.sw {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  flex-shrink: 0;
+}
+.sw.on {
+  outline: 2.5px solid var(--purple-dark);
+  transform: scale(1.15);
+}
+
+/* الأزرار */
+.btn {
+  font-family: 'Baloo Bhaijaan 2';
+  font-weight: 800;
+  font-size: clamp(12px, 1.2vw, 14.5px);
+  border: 0;
+  cursor: pointer;
+  color: #3b2500;
+  background: linear-gradient(180deg, #ffdf6d 0%, #ffc107 100%);
+  border-radius: 10px;
+  padding: 6px 12px;
+  min-height: 38px;
+  box-shadow: 0 3px 0 var(--sun-shadow), 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.12s ease-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  user-select: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--sun-shadow); }
+.btn.ghost {
+  background: linear-gradient(180deg, #fff 0%, #f1f5f9 100%);
+  color: var(--ink);
+  box-shadow: 0 3px 0 #cbd5e1, 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+.btn.mint {
+  background: linear-gradient(180deg, #6ee7b7 0%, #10b981 100%);
+  color: #022c22;
+  box-shadow: 0 3px 0 var(--mint-shadow), 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.btn.coral {
+  background: linear-gradient(180deg, #ff8796 0%, #ff4757 100%);
+  color: #fff;
+  box-shadow: 0 3px 0 var(--coral-shadow), 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.btn[disabled] { opacity: 0.5; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+
+.row {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+input[type=text] {
+  font-family: 'Tajawal';
+  font-size: 14px;
+  font-weight: 700;
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 6px 10px;
+  outline: 0;
+  min-width: 110px;
+  min-height: 38px;
+  flex-shrink: 0;
+}
+input[type=text]:focus { border-color: var(--purple-dark); }
+
+/* رسائل التغذية الراجعة والتشجيع */
+.fb {
+  background: #fff;
+  border-right: 5px solid var(--mint);
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  color: var(--ink);
+  flex-shrink: 0;
+}
+.fb.show { display: block; animation: popBounce 0.35s ease-out; }
+.fb.warn { border-right-color: var(--sun); background: #fffdf0; }
+@keyframes popBounce {
+  from { transform: scale(0.93); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+/* بطاقات الاختيارات (Grid3 / Cards) */
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 6px;
+  width: 100%;
+}
+.card {
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: clamp(10.5px, 1.1vw, 13px);
+  color: var(--ink);
+  box-shadow: 0 4px 0 #cbd5e1, 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 1.5px solid #f1f5f9;
+  padding: 6px 4px;
+  text-align: center;
+  min-height: 64px;
+  flex-shrink: 0;
+}
+.card:active { transform: translateY(2px); box-shadow: 0 1px 0 #cbd5e1; }
+.card .em { font-size: clamp(26px, 3.8vw, 40px); line-height: 1; }
+.card.ok  { background: #d1fae5; box-shadow: 0 4px 0 #10b981; border-color: #34d399; }
+.card.no  { background: #ffe4e6; box-shadow: 0 4px 0 #f43f5e; border-color: #fb7185; animation: shake 0.4s; }
+@keyframes shake { 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
+
+.item {
+  position: absolute;
+  font-size: clamp(28px, 4.5vw, 38px);
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+.item.drag { cursor: grabbing; z-index: 99; transform: scale(1.2); }
+
+/* =====================================================
+   شريط التنقل السفلي (Navigation Bar)
+   ===================================================== */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 460px;
+  gap: 8px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.20);
+  padding: 4px 10px;
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+.nav .btn { flex: 1; min-width: 0; font-size: clamp(12.5px, 1.3vw, 15px); }
+.pgno {
+  color: #fff;
+  font-family: 'Baloo Bhaijaan 2';
+  font-weight: 800;
+  font-size: 14px;
+  min-width: 55px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+.hint {
+  color: #e2e8f0;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   صفحة الغلاف والختام
+   ===================================================== */
+.cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  height: 100%;
+  padding: 8px 4px;
+}
+.cover h1 {
+  font-family: 'Baloo Bhaijaan 2';
+  font-size: clamp(22px, 4.5vw, 44px);
+  color: #fff;
+  margin: 0;
+  line-height: 1.15;
+  text-shadow: 0 4px 0 rgba(10, 25, 70, 0.4), 0 0 14px rgba(255, 255, 255, 0.25);
+}
+.cover .sub {
+  color: #ffe066;
+  font-weight: 900;
+  font-size: clamp(12px, 1.6vw, 18px);
+  background: rgba(255, 255, 255, 0.15);
+  padding: 3px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.cover .meta {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.tag {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: clamp(10px, 1.1vw, 12px);
+  font-weight: 800;
+}
+.float { animation: floatAnim 3.5s ease-in-out infinite; }
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-8px) rotate(2deg); }
+}
+
+.big { font-size: clamp(12.5px, 1.4vw, 17px); font-weight: 800; color: #fff; text-align: center; }
+
+/* تأثير النجوم المتفجرة */
+.burst {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.burst .s {
+  font-size: clamp(55px, 10vw, 90px);
+  animation: burstAnim 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  filter: drop-shadow(0 0 16px #ffea00);
+}
+@keyframes burstAnim {
+  0%   { transform: scale(0.1) rotate(-45deg); opacity: 0; }
+  35%  { transform: scale(1.25) rotate(10deg); opacity: 1; }
+  100% { transform: scale(0.85) translateY(-120px); opacity: 0; }
+}
+
+canvas { touch-action: none; display: block; }
+.center { display: flex; align-items: center; justify-content: center; }
+
+/* =====================================================
+   نافذة إدخال الاسم المنبثقة (Name Modal)
+   ===================================================== */
+.name-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 56, 0.80);
+  backdrop-filter: blur(10px);
+  padding: 16px;
+}
+.name-modal-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 22px 18px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.name-modal-box .em { font-size: 46px; line-height: 1; }
+.name-modal-box h3 { font-family: 'Baloo Bhaijaan 2'; font-weight: 800; font-size: 18px; color: var(--ink); margin: 0; }
+.name-modal-box p  { font-size: 13px; font-weight: 700; color: #64748b; margin: 0; }
+.name-modal-box input[type=text] {
+  width: 100%;
+  font-size: 16px; /* يمنع auto-zoom على Safari */
+  font-weight: 700;
+  text-align: center;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 8px 12px;
+  min-height: 44px;
+  outline: 0;
+  background: #f8fafc;
+  color: var(--ink);
+  font-family: 'Tajawal';
+}
+.name-modal-box input[type=text]:focus {
+  border-color: var(--purple-dark);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.15);
+}
+.name-modal-box .modal-btns { display: flex; gap: 8px; width: 100%; }
+.name-modal-box .modal-btns .btn { flex: 1; min-height: 42px; font-size: 14px; }
+
+/* =====================================================
+   📱 القواعد الخاصة بشاشات الموبايل (Mobile Responsive Layout)
+   ===================================================== */
+@media (max-width: 768px) {
+  .shell {
+    padding: 4px 6px;
+    gap: 4px;
+  }
+  .hud {
+    padding: 3px 8px;
+    gap: 5px;
+  }
+  .hud h1 {
+    font-size: 11px;
+  }
+  .book-wrap {
+    perspective: none;
+  }
+  .sheet {
+    border-width: 2px;
+    border-radius: 14px;
+  }
+  .pg {
+    padding: 6px 8px;
+    gap: 6px;
+  }
+  .pg-head {
+    padding: 3px 8px;
+    gap: 6px;
+  }
+
+  /* ترتيب العناصر رأسياً بوضوح تام لمنع أي تداخل */
+  .body {
+    flex-direction: column !important;
+    gap: 8px !important;
+    overflow-y: visible !important;
+    flex: none !important;
+    min-height: min-content !important;
+  }
+  .col.side {
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    flex: none !important;
+  }
+  .col.main {
+    width: 100% !important;
+    min-width: 0 !important;
+    flex: none !important;
+  }
+
+  /* جعل الأزرار والأدوات قابلة للتمرير الأفقي بسلاسة */
+  .tools {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 6px !important;
+  }
+  .tools::-webkit-scrollbar { display: none; }
+  .tools .lbl {
+    font-size: 10px;
+    width: auto;
+    margin-inline-end: 4px;
+    flex-shrink: 0;
+    align-self: center;
+    margin-bottom: 0;
+  }
+  .chip {
+    flex-shrink: 0;
+    min-width: 30px;
+    min-height: 30px;
+    font-size: 16px;
+  }
+  .sw {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* المسرح يأخذ ارتفاعًا ثابتًا مناسبًا للموبايل */
+  .stage {
+    min-height: 180px;
+    height: 200px;
+    flex: none;
+    border-radius: 12px;
+  }
+
+  /* كروت الاختيار تتوزع بدقة */
+  .grid3 {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)) !important;
+    gap: 5px !important;
+    padding: 4px !important;
+  }
+  .card {
+    min-height: 56px;
+    padding: 4px 2px;
+    font-size: 11px;
+  }
+  .card .em {
+    font-size: 24px;
+  }
+
+  .say {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+  .mini {
+    padding: 4px 6px;
+    font-size: 11px;
+  }
+  .btn {
+    min-height: 34px;
+    padding: 5px 10px;
+    font-size: 12.5px;
+  }
+  .hint {
+    display: none; /* توفير المساحة */
+  }
+}
+
+/* الشاشات المنخفضة جداً (الوضع الأفقي للموبايل) */
+@media (max-height: 580px) {
+  .hud { display: none; }
+  .shell { padding: 2px 4px; gap: 2px; }
+  .pg { padding: 4px 6px; }
+  .pg-head { padding: 2px 6px; }
+  .say .av { display: none; }
+  .stage { min-height: 140px; height: 160px; }
+}
+
 @media print {
-  body { background:#fff; color:#000; overflow:auto; }
-  .shell > :not(.book-wrap) { display:none !important; }
-  .book-wrap { width:100% !important; max-height:none !important; }
-  .sheet:not(.live) { display:none !important; }
-  .sheet.live { border:none !important; box-shadow:none !important; }
+  body { background: #fff; color: #000; overflow: auto; }
+  .shell > :not(.book-wrap) { display: none !important; }
+  .book-wrap { width: 100% !important; max-height: none !important; }
+  .sheet:not(.live) { display: none !important; }
+  .sheet.live { border: none !important; box-shadow: none !important; }
 }
