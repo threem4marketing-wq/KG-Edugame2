@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>🚀 مغامرة إنقاذ الكوكب الأزرق — المجلة الإلكترونية المبهجة المتجاوبة</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>🚀 مغامرة إنقاذ الكوكب الأزرق — المجلة الإلكترونية التفاعلية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -29,12 +29,18 @@
   --r: 24px;
 }
 
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
 html, body {
   min-height: 100vh;
   min-height: 100dvh;
   margin: 0;
   padding: 0;
+  background: #0f172a;
 }
 
 body {
@@ -45,7 +51,6 @@ body {
     radial-gradient(1000px 700px at 10% 110%, #4c1d95 0%, transparent 60%),
     radial-gradient(800px 500px at 50% 50%, #1e1b4b 0%, #0f172a 100%);
   overflow-x: hidden;
-  overflow-y: auto;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -82,8 +87,8 @@ body::before {
 .bg-cloud {
   position: fixed;
   pointer-events: none;
-  opacity: 0.15;
-  font-size: clamp(80px, 12vw, 140px);
+  opacity: 0.12;
+  font-size: clamp(70px, 10vw, 130px);
   z-index: 0;
   animation: floatCloud 22s linear infinite;
 }
@@ -94,19 +99,19 @@ body::before {
   to { transform: translateX(-120vw); }
 }
 
-/* ===== الهيكل العام التكيفي Auto Responsive Shell ===== */
+/* ===== الهيكل العام الذكي والمتجاوب (Responsive Shell) ===== */
 .shell {
   position: relative;
   width: 100%;
-  max-width: 1280px;
+  max-width: 1240px;
   height: 100vh;
   height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  padding: 10px 14px;
+  gap: 6px;
+  padding: 8px 12px;
   z-index: 1;
 }
 
@@ -116,19 +121,19 @@ body::before {
   max-width: 1180px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.1));
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.12));
   border: 2px solid rgba(255, 255, 255, 0.35);
   border-radius: 999px;
-  padding: 6px 16px;
+  padding: 6px 14px;
   backdrop-filter: blur(12px);
   color: #fff;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   flex: none;
 }
 .hud h1 {
   font-family: 'Baloo Bhaijaan 2';
-  font-size: clamp(13px, 1.6vw, 20px);
+  font-size: clamp(12px, 1.6vw, 19px);
   margin: 0;
   font-weight: 800;
   letter-spacing: .2px;
@@ -140,19 +145,20 @@ body::before {
   flex: 1;
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 2px;
   position: relative;
-  height: 24px;
+  height: 22px;
+  overflow: hidden;
 }
 .track .link {
   flex: 1;
-  height: 4px;
+  height: 3px;
   background: rgba(255, 255, 255, 0.25);
   border-radius: 99px;
 }
 .track .dot {
-  width: clamp(14px, 1.8vw, 22px);
-  height: clamp(14px, 1.8vw, 22px);
+  width: clamp(12px, 1.7vw, 20px);
+  height: clamp(12px, 1.7vw, 20px);
   flex: none;
   position: relative;
   transition: transform 0.3s;
@@ -167,31 +173,29 @@ body::before {
 .track .dot.on svg {
   filter: none;
   opacity: 1;
-  transform: scale(1.35) rotate(12deg);
+  transform: scale(1.3) rotate(12deg);
   filter: drop-shadow(0 0 6px #ffea00);
 }
 .count {
   font-family: 'Baloo Bhaijaan 2';
   font-weight: 800;
-  font-size: clamp(14px, 1.6vw, 18px);
+  font-size: clamp(13px, 1.5vw, 17px);
   white-space: nowrap;
   background: linear-gradient(135deg, #fffae6, #ffe066);
   color: #5c3d00;
-  padding: 2px 12px;
+  padding: 2px 10px;
   border-radius: 999px;
   box-shadow: 0 3px 0 #b38000;
 }
 
-/* ===== كتاب المجلة الكرتوني الذكي (Book Container) ===== */
+/* ===== كتاب المجلة الكرتوني الذكي للموبايل (Book Container) ===== */
 .book-wrap {
   width: 100%;
   max-width: 1180px;
-  aspect-ratio: 16 / 10.2;
-  max-height: calc(100dvh - 130px);
-  position: relative;
-  perspective: 2400px;
   flex: 1;
   min-height: 0;
+  position: relative;
+  perspective: 2400px;
 }
 .book {
   position: absolute;
@@ -205,7 +209,7 @@ body::before {
   overflow: hidden;
   transform-origin: right center;
   backface-visibility: hidden;
-  transition: transform .85s cubic-bezier(.34, 1.25, .64, 1);
+  transition: transform .85s cubic-bezier(.34, 1.2, .64, 1);
   box-shadow: var(--shadow);
   background: var(--sky);
   pointer-events: none;
@@ -224,8 +228,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   opacity: 0;
-  transition: opacity .5s;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.35), transparent 45%);
+  transition: opacity .4s;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.3), transparent 45%);
 }
 .sheet.turning::after { opacity: 1; }
 
@@ -235,12 +239,13 @@ body::before {
   inset: 0;
   display: flex;
   flex-direction: column;
-  padding: clamp(10px, 2vw, 16px) clamp(12px, 2.2vw, 20px);
+  padding: clamp(10px, 2vw, 16px);
   background: 
     radial-gradient(800px 500px at 85% 10%, #89e2ff 0%, transparent 65%),
     linear-gradient(180deg, #38cbfd 0%, #11a3e3 100%);
   color: var(--ink);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .pg.dark {
   background: 
@@ -254,28 +259,16 @@ body::before {
     linear-gradient(180deg, #fff9ee 0%, #ffeaa7 100%);
   color: var(--ink);
 }
-.pg.pink {
-  background: 
-    radial-gradient(700px 420px at 80% 0%, #fff 0%, transparent 60%),
-    linear-gradient(180deg, #ffadd2 0%, #ff66a1 100%);
-  color: var(--ink);
-}
-.pg.mint {
-  background: 
-    radial-gradient(700px 420px at 20% 0%, #ffffff 0%, transparent 60%),
-    linear-gradient(180deg, #b2f5ea 0%, #38d9a9 100%);
-  color: var(--ink);
-}
 
 /* ترويسة الصفحة */
 .pg-head {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex: none;
   background: rgba(255, 255, 255, 0.38);
   padding: 5px 12px;
-  border-radius: 16px;
+  border-radius: 14px;
   backdrop-filter: blur(8px);
   border: 2px solid rgba(255, 255, 255, 0.6);
 }
@@ -289,20 +282,23 @@ body::before {
   color: #4a2c00;
   background: linear-gradient(135deg, #ffe066, #ffc107);
   border-radius: 10px;
-  padding: 3px 12px;
-  font-size: clamp(12px, 1.4vw, 15px);
+  padding: 2px 10px;
+  font-size: clamp(11px, 1.3vw, 14px);
   box-shadow: 0 3px 0 #cc9600;
   white-space: nowrap;
 }
 .pg h2 {
   font-family: 'Baloo Bhaijaan 2';
   font-weight: 800;
-  font-size: clamp(16px, 2.2vw, 28px);
+  font-size: clamp(15px, 2.2vw, 26px);
   margin: 0;
   color: #ffffff;
-  text-shadow: 0 3px 8px rgba(10, 25, 70, 0.4);
+  text-shadow: 0 2px 6px rgba(10, 25, 70, 0.4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.pg.cream h2, .pg.mint h2 {
+.pg.cream h2 {
   color: var(--ink);
   text-shadow: none;
 }
@@ -312,18 +308,18 @@ body::before {
   color: var(--purple-dark);
   font-weight: 800;
   border-radius: 999px;
-  padding: 4px 14px;
-  font-size: clamp(11px, 1.2vw, 13px);
+  padding: 3px 12px;
+  font-size: clamp(10px, 1.1vw, 12px);
   white-space: nowrap;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  border: 2px solid #e9d5ff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  border: 1.5px solid #e9d5ff;
 }
 
 /* جسم الصفحة والتنسيقات الداخليّة المتجاوبة */
 .body {
   flex: 1;
   display: flex;
-  gap: 12px;
+  gap: 10px;
   min-height: 0;
   margin-top: 8px;
 }
@@ -345,50 +341,49 @@ body::before {
 /* ===== فقاعة كلام شخصية "غيث" (Ghaith Speech Bubble) ===== */
 .say {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: flex-start;
   background: #ffffff;
-  border-radius: 18px;
-  padding: 10px 14px;
-  box-shadow: 0 8px 20px rgba(15, 23, 56, 0.1);
+  border-radius: 16px;
+  padding: 8px 12px;
+  box-shadow: 0 6px 16px rgba(15, 23, 56, 0.08);
   position: relative;
-  font-size: clamp(12px, 1.25vw, 15px);
-  line-height: 1.5;
+  font-size: clamp(11.5px, 1.2vw, 14.5px);
+  line-height: 1.45;
   font-weight: 700;
   color: var(--ink);
-  border: 3px solid #e2e8f0;
+  border: 2.5px solid #e2e8f0;
 }
 .say .av {
-  width: clamp(40px, 4vw, 54px);
-  height: clamp(40px, 4vw, 54px);
+  width: clamp(34px, 3.8vw, 48px);
+  height: clamp(34px, 3.8vw, 48px);
   flex: none;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.12));
+  filter: drop-shadow(0 3px 5px rgba(0,0,0,0.12));
   animation: bounceAvatar 3s ease-in-out infinite alternate;
 }
 @keyframes bounceAvatar {
   0% { transform: translateY(0); }
-  100% { transform: translateY(-5px); }
+  100% { transform: translateY(-4px); }
 }
 .say b { color: var(--purple-dark); font-weight: 900; }
 
 .mini {
-  font-size: clamp(11px, 1.15vw, 13px);
+  font-size: clamp(10.5px, 1.1vw, 12.5px);
   color: #2d3748;
-  line-height: 1.5;
-  background: rgba(255, 255, 255, 0.88);
-  border-radius: 14px;
-  padding: 8px 12px;
+  line-height: 1.45;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 6px 10px;
   font-weight: 700;
-  border: 2px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
 }
 .mini u {
   text-decoration: none;
   font-weight: 800;
   color: var(--purple-dark);
   background: #f3e8ff;
-  padding: 2px 6px;
-  border-radius: 6px;
+  padding: 1px 5px;
+  border-radius: 5px;
 }
 
 /* ===== المسرح/المجال التفاعلي (Stage Area) ===== */
@@ -396,236 +391,218 @@ body::before {
   flex: 1;
   position: relative;
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
-  min-height: 160px;
-  box-shadow: inset 0 0 0 3px #e2e8f0, 0 8px 16px rgba(0,0,0,0.05);
+  min-height: 150px;
+  box-shadow: inset 0 0 0 2.5px #e2e8f0, 0 6px 14px rgba(0,0,0,0.05);
+  touch-action: none;
 }
 .stage.night {
   background: linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%);
-  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 0 2.5px rgba(255, 255, 255, 0.2);
 }
 
-/* ===== شريط الأدوات والخيارات التفاعلية (Tools & Chips) ===== */
+/* ===== شريط الأدوات والخيارات التفاعلية الممتد أفقيًا للموبايل (Scrollable Tools) ===== */
 .tools {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5px;
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 16px;
-  padding: 8px;
+  border-radius: 14px;
+  padding: 6px 8px;
   border: 2px solid #e2e8f0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
 }
 .tools .lbl {
   width: 100%;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   color: var(--purple-dark);
 }
 .chip {
   border: 2px solid #e2e8f0;
   background: #f8fafc;
-  border-radius: 12px;
-  padding: 4px 8px;
+  border-radius: 10px;
+  padding: 3px 6px;
   cursor: pointer;
-  font-size: clamp(18px, 2.2vw, 24px);
+  font-size: clamp(16px, 2vw, 22px);
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 38px;
-  min-height: 38px;
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  min-width: 36px;
+  min-height: 36px;
+  transition: transform 0.15s;
 }
-.chip:hover {
-  transform: translateY(-2px) scale(1.08);
-  background: #ffffff;
-  border-color: var(--sky);
-}
+.chip:active { transform: scale(0.92); }
 .chip.on {
   border-color: var(--purple-dark);
   background: #f3e8ff;
   box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
-  transform: scale(1.08);
 }
-.chip svg { width: 28px; height: 28px; display: block; }
+.chip svg { width: 24px; height: 24px; display: block; }
 
 .sw {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  border: 3px solid #ffffff;
+  border: 2.5px solid #ffffff;
   cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.18);
-  transition: transform 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.18);
 }
-.sw:hover { transform: scale(1.15); }
-.sw.on { outline: 3px solid var(--purple-dark); transform: scale(1.2); }
+.sw.on { outline: 3px solid var(--purple-dark); transform: scale(1.15); }
 
-/* ===== الأزرار ثلاثية الأبعاد المبهجة (3D Tactile Buttons) ===== */
+/* ===== الأزرار ثلاثية الأبعاد المبهجة للموبايل (Tactile Touch Buttons) ===== */
 .btn {
   font-family: 'Baloo Bhaijaan 2';
   font-weight: 800;
-  font-size: clamp(13px, 1.4vw, 16px);
+  font-size: clamp(12.5px, 1.3vw, 15px);
   border: 0;
   cursor: pointer;
   color: #3b2500;
   background: linear-gradient(180deg, #ffdf6d 0%, #ffc107 100%);
-  border-radius: 14px;
-  padding: 8px 16px;
-  box-shadow: 0 5px 0 var(--sun-shadow), 0 8px 14px rgba(0,0,0,0.12);
-  transition: all 0.15s ease-out;
+  border-radius: 12px;
+  padding: 8px 14px;
+  min-height: 42px;
+  box-shadow: 0 4px 0 var(--sun-shadow), 0 6px 12px rgba(0,0,0,0.12);
+  transition: all 0.12s ease-out;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   user-select: none;
   white-space: nowrap;
 }
-.btn:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.05);
-}
 .btn:active {
   transform: translateY(3px);
-  box-shadow: 0 2px 0 var(--sun-shadow);
+  box-shadow: 0 1px 0 var(--sun-shadow);
 }
 .btn.ghost {
   background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
   color: var(--ink);
-  box-shadow: 0 5px 0 #cbd5e1, 0 8px 14px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 0 #cbd5e1, 0 6px 12px rgba(0,0,0,0.06);
 }
-.btn.ghost:active { box-shadow: 0 2px 0 #cbd5e1; }
-
 .btn.mint {
   background: linear-gradient(180deg, #6ee7b7 0%, #10b981 100%);
   color: #022c22;
-  box-shadow: 0 5px 0 var(--mint-shadow), 0 8px 14px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 0 var(--mint-shadow), 0 6px 12px rgba(0,0,0,0.12);
 }
-.btn.mint:active { box-shadow: 0 2px 0 var(--mint-shadow); }
-
 .btn.coral {
   background: linear-gradient(180deg, #ff8796 0%, #ff4757 100%);
   color: #ffffff;
-  box-shadow: 0 5px 0 var(--coral-shadow), 0 8px 14px rgba(0,0,0,0.12);
-  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 0 var(--coral-shadow), 0 6px 12px rgba(0,0,0,0.12);
 }
-.btn.coral:active { box-shadow: 0 2px 0 var(--coral-shadow); }
-
 .btn[disabled] { opacity: .55; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
 
-.row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.row { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
 
 input[type=text] {
   font-family: 'Tajawal';
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
-  border: 2.5px solid #cbd5e1;
-  border-radius: 12px;
-  padding: 8px 12px;
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 6px 10px;
   outline: 0;
-  min-width: 140px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
-  transition: border-color 0.2s;
+  min-width: 120px;
+  min-height: 40px;
 }
 input[type=text]:focus { border-color: var(--purple-dark); }
 
-/* صندوق التغذية الراجعة المشجّع */
 .fb {
   background: #ffffff;
-  border-right: 6px solid var(--mint);
-  border-radius: 14px;
-  padding: 10px 14px;
-  font-size: 14px;
+  border-right: 5px solid var(--mint);
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-size: 13px;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.45;
   display: none;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 5px 14px rgba(0,0,0,0.08);
   color: var(--ink);
 }
-.fb.show { display: block; animation: popBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.fb.show { display: block; animation: popBounce 0.35s ease-out; }
 .fb.warn { border-right-color: var(--sun); background: #fffdf0; }
 @keyframes popBounce {
-  from { transform: scale(0.92) translateY(6px); opacity: 0; }
-  to { transform: scale(1) translateY(0); opacity: 1; }
+  from { transform: scale(0.93); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
-/* العناصر الموضوعة على التخطيط (Placed Draggables) */
 .item {
   position: absolute;
-  font-size: clamp(32px, 4vw, 44px);
+  font-size: clamp(30px, 5vw, 42px);
   cursor: grab;
   user-select: none;
   touch-action: none;
   line-height: 1;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
-  transition: transform 0.15s;
+  filter: drop-shadow(0 3px 5px rgba(0,0,0,0.25));
 }
-.item:hover { transform: scale(1.15); }
-.item.drag { cursor: grabbing; z-index: 99; transform: scale(1.25); }
+.item.drag { cursor: grabbing; z-index: 99; transform: scale(1.2); }
 
-/* ===== شريط التصفح والسفلي (Nav Bar) ===== */
+/* ===== شريط التصفح والسفلي الممتاز (Responsive Navigation Bar) ===== */
 .nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 500px;
   gap: 10px;
   flex: none;
-  background: rgba(255, 255, 255, 0.15);
-  padding: 5px 14px;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 4px 12px;
   border-radius: 999px;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
-.nav .btn { min-width: 110px; font-size: clamp(14px, 1.5vw, 17px); }
+.nav .btn { flex: 1; min-width: 0; font-size: clamp(13px, 1.4vw, 16px); }
 .pgno {
   color: #ffffff;
   font-family: 'Baloo Bhaijaan 2';
   font-weight: 800;
-  font-size: clamp(14px, 1.6vw, 17px);
-  min-width: 70px;
+  font-size: 15px;
+  min-width: 60px;
   text-align: center;
   text-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 .hint {
   color: #e2e8f0;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   text-align: center;
   opacity: .9;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
-/* ===== صفحة الغلاف الجذابة (Cover Page) ===== */
+/* ===== صفحة الغلاف الجذابة للموبايل (Cover Page) ===== */
 .cover {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 12px;
+  gap: 10px;
   height: 100%;
+  padding: 10px 4px;
 }
 .cover h1 {
   font-family: 'Baloo Bhaijaan 2';
-  font-size: clamp(28px, 4.5vw, 56px);
+  font-size: clamp(24px, 5vw, 50px);
   color: #ffffff;
   margin: 0;
   line-height: 1.15;
-  text-shadow: 0 6px 0 rgba(10, 25, 70, 0.4), 0 0 20px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 5px 0 rgba(10, 25, 70, 0.4), 0 0 16px rgba(255, 255, 255, 0.25);
 }
 .cover .sub {
   color: #ffe066;
   font-weight: 900;
-  font-size: clamp(14px, 1.7vw, 20px);
+  font-size: clamp(13px, 1.8vw, 19px);
   background: rgba(255, 255, 255, 0.15);
-  padding: 4px 16px;
+  padding: 4px 14px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 .cover .meta {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -634,18 +611,16 @@ input[type=text]:focus { border-color: var(--purple-dark); }
   border: 1.5px solid rgba(255, 255, 255, 0.4);
   color: #fff;
   border-radius: 999px;
-  padding: 4px 14px;
-  font-size: clamp(11px, 1.2vw, 14px);
+  padding: 3px 12px;
+  font-size: clamp(10.5px, 1.2vw, 13px);
   font-weight: 800;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 .float { animation: floatAnim 3.5s ease-in-out infinite; }
 @keyframes floatAnim {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-14px) rotate(4deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
 }
 
-/* ===== تأثير النجوم الطائرة والاحتفالية (Star Burst FX) ===== */
 .burst {
   position: fixed;
   inset: 0;
@@ -656,115 +631,143 @@ input[type=text]:focus { border-color: var(--purple-dark); }
   z-index: 999;
 }
 .burst .s {
-  font-size: clamp(70px, 12vw, 110px);
+  font-size: clamp(65px, 12vw, 100px);
   animation: burstAnim 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   filter: drop-shadow(0 0 20px #ffea00);
 }
 @keyframes burstAnim {
   0% { transform: scale(.1) rotate(-45deg); opacity: 0; }
   35% { transform: scale(1.3) rotate(12deg); opacity: 1; }
-  100% { transform: scale(.9) translateY(-160px); opacity: 0; }
+  100% { transform: scale(.9) translateY(-140px); opacity: 0; }
 }
 
 canvas { touch-action: none; display: block; }
 .center { display: flex; align-items: center; justify-content: center; }
+
 .grid3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-  gap: 10px;
-  padding: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 8px;
   height: 100%;
 }
 
 .card {
   background: #ffffff;
-  border-radius: 18px;
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 4px;
   cursor: pointer;
   font-weight: 800;
-  font-size: clamp(12px, 1.3vw, 15px);
+  font-size: clamp(11px, 1.2vw, 14px);
   color: var(--ink);
-  box-shadow: 0 6px 0 #cbd5e1, 0 8px 14px rgba(0,0,0,0.06);
-  border: 2.5px solid #f1f5f9;
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  padding: 10px;
+  box-shadow: 0 5px 0 #cbd5e1, 0 6px 12px rgba(0,0,0,0.06);
+  border: 2px solid #f1f5f9;
+  padding: 8px 4px;
   text-align: center;
 }
-.card:hover { transform: translateY(-3px) scale(1.02); border-color: var(--sky); }
-.card:active { transform: translateY(3px); box-shadow: 0 2px 0 #cbd5e1; }
-.card .em { font-size: clamp(36px, 4vw, 50px); filter: drop-shadow(0 3px 5px rgba(0,0,0,0.1)); }
-.card.ok { background: #d1fae5; box-shadow: 0 6px 0 #10b981; border-color: #34d399; }
-.card.no { background: #ffe4e6; box-shadow: 0 6px 0 #f43f5e; border-color: #fb7185; animation: shake 0.4s; }
-@keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+.card:active { transform: translateY(3px); box-shadow: 0 1px 0 #cbd5e1; }
+.card .em { font-size: clamp(30px, 4.5vw, 46px); }
+.card.ok { background: #d1fae5; box-shadow: 0 5px 0 #10b981; border-color: #34d399; }
+.card.no { background: #ffe4e6; box-shadow: 0 5px 0 #f43f5e; border-color: #fb7185; animation: shake 0.4s; }
+@keyframes shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
 
-.big { font-size: clamp(14px, 1.6vw, 20px); font-weight: 800; color: #fff; text-align: center; text-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+.big { font-size: clamp(13px, 1.5vw, 18px); font-weight: 800; color: #fff; text-align: center; }
 
-/* ===== قواعد التجاوب التلقائي للشاشات المتوسطة والصغيرة Auto Responsive Rules ===== */
-@media (max-width: 860px) {
-  .shell {
-    height: 100vh;
-    height: 100dvh;
-    padding: 6px 8px;
-    gap: 6px;
-  }
-  .book-wrap {
-    aspect-ratio: auto;
-    max-height: none;
-    height: 100%;
-    min-height: calc(100dvh - 120px);
-  }
-  .sheet {
-    border-width: 3px;
-    border-radius: 18px;
-  }
-  .body {
-    flex-direction: column !important;
-    gap: 8px;
-    overflow-y: auto;
-  }
-  .col.side {
-    width: 100% !important;
-  }
-  .col.main {
-    width: 100% !important;
-    flex: 1;
-    min-height: 220px;
-  }
-  .stage {
-    min-height: 180px;
-  }
-  .say {
-    padding: 8px 12px;
-    gap: 8px;
-  }
-  .hud {
-    padding: 4px 12px;
-  }
-}
-
-@media (max-height: 640px) {
+/* ==========================================================================
+   📱 قواعد التجاوب الشامل الذكي للموبايل (Mobile Specific Auto-Layout)
+   ========================================================================== */
+@media (max-width: 768px) {
   .shell {
     padding: 4px 6px;
     gap: 4px;
   }
-  .hud h1 { font-size: 13px; }
-  .count { font-size: 13px; padding: 1px 10px; }
-  .pg { padding: 8px 12px; }
-  .pg-head { padding: 3px 10px; }
-  .badge { font-size: 12px; padding: 2px 8px; }
-  .pg h2 { font-size: 16px; }
-  .say { padding: 6px 10px; }
-  .say .av { width: 34px; height: 34px; }
-  .mini { padding: 5px 10px; font-size: 11px; }
-  .btn { padding: 6px 12px; font-size: 13px; }
-  .nav .btn { min-width: 95px; padding: 6px 10px; }
+  
+  .hud {
+    padding: 4px 10px;
+    gap: 6px;
+  }
+  .hud h1 { font-size: 11.5px; }
+  
+  .book-wrap {
+    perspective: none; /* إلغاء التشويه ثلاثي الأبعاد الشديد للشاشات الصغيرة */
+  }
+
+  .sheet {
+    border-width: 2px;
+    border-radius: 16px;
+  }
+
+  /* إعادة هيكلة ترتيب عناصر الصفحة للموبايل عموديًا بدون ضغط */
+  .body {
+    flex-direction: column !important;
+    gap: 6px;
+    overflow-y: auto;
+  }
+
+  .col.side {
+    width: 100% !important;
+    max-height: 48%;
+  }
+
+  .col.main {
+    width: 100% !important;
+    flex: 1;
+    min-height: 180px;
+  }
+
+  /* تحويل أشرطة الأدوات العريضة إلى شريط أفقي قابل للتمرير باللمس على الموبايل */
+  .tools {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 6px;
+  }
+  .tools::-webkit-scrollbar { display: none; }
+  .tools .lbl { font-size: 10px; width: auto; margin-inline-end: 6px; flex: none; align-self: center; }
+  .chip { flex: none; min-width: 34px; min-height: 34px; font-size: 18px; }
+
+  /* تحسين شبكة الخيارات للموبايل إلى صفين مرنين */
+  .grid3 {
+    grid-template-columns: repeat(auto-fit, minmax(85px, 1fr)) !important;
+    gap: 6px;
+    padding: 4px;
+  }
+
+  .say {
+    padding: 6px 10px;
+  }
+  
+  .mini {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+  
+  .stage {
+    min-height: 160px;
+    border-radius: 14px;
+  }
+
+  input[type=text] {
+    min-width: 100px;
+    font-size: 12px;
+  }
 }
 
-/* طباعة الشهادة */
+/* الشاشات الصغيرة جدًا أو الوضع الأفقي للموبايل (Low Height Devices) */
+@media (max-height: 580px) {
+  .hud { display: none; } /* إخفاء HUD مؤقتاً لتوفير المساحة الرأسية للألعاب */
+  .shell { padding: 2px 4px; }
+  .pg { padding: 6px 8px; }
+  .pg-head { padding: 2px 8px; }
+  .say .av { display: none; } /* إخفاء الأيقونة الثابتة للشخصية في الارتفاع المنخفض */
+  .stage { min-height: 130px; }
+}
+
 @media print {
   body { background: #fff; color: #000; overflow: auto; }
   .shell > :not(.book-wrap) { display: none !important; }
@@ -788,16 +791,16 @@ canvas { touch-action: none; display: block; }
     <div class="count"><span id="starCount">0</span>/16 ⭐</div>
   </div>
 
-  <!-- حاوي كتاب المجلة المتجاوب -->
+  <!-- حاوي كتاب المجلة المتجاوب المطور للموبايل -->
   <div class="book-wrap"><div class="book" id="book"></div></div>
 
-  <!-- شريط التنقل بين الصفحات -->
+  <!-- شريط التنقل السفلي المتجاوب مع الموبايل -->
   <div class="nav">
     <button class="btn ghost" id="prev">▶ السابق</button>
     <div class="pgno" id="pgno">1 / 1</div>
     <button class="btn" id="next">التالي ◀</button>
   </div>
-  <div class="hint">استخدم الأسهم ← → للتنقل السلس بين صفحات المجلة</div>
+  <div class="hint">استخدم الأسهم ← → أو زر التالي للتنقل السلس بين صفحات المجلة</div>
 </div>
 
 <script>
@@ -867,7 +870,7 @@ function speak(txt) {
 function readBtn(txt) {
   const b = document.createElement('button');
   b.className = 'btn ghost';
-  b.style.fontSize = '13px';
+  b.style.fontSize = '12px';
   b.innerHTML = '🔊 اسمع التعليمات';
   b.onclick = () => speak(txt);
   return b;
@@ -903,7 +906,7 @@ function paintTrack() {
   $$('#track .dot').forEach((d, i) => d.classList.toggle('on', State.stars.has(i + 1)));
 }
 
-/* دعم السحب والإسقاط باللمس والفأرة المتجاوب */
+/* دعم السحب والإسقاط باللمس والفأرة المتجاوب للموبايل */
 function makeDraggable(node, box) {
   let sx, sy, ox, oy;
   const down = e => {
@@ -918,8 +921,8 @@ function makeDraggable(node, box) {
   const move = e => {
     if (!node.classList.contains('drag')) return;
     let x = ox + (e.clientX - sx), y = oy + (e.clientY - sy);
-    x = Math.max(-10, Math.min(box._r.width - 30, x));
-    y = Math.max(-10, Math.min(box._r.height - 30, y));
+    x = Math.max(-10, Math.min(box._r.width - 25, x));
+    y = Math.max(-10, Math.min(box._r.height - 25, y));
     node.style.left = x + 'px';
     node.style.top = y + 'px';
   };
@@ -931,7 +934,7 @@ function makeDraggable(node, box) {
   node.addEventListener('dblclick', () => node.remove());
 }
 
-function placer(stage, getTool, size = 42) {
+function placer(stage, getTool, size = 38) {
   stage.addEventListener('pointerdown', e => {
     if (e.target !== stage) return;
     const t = getTool();
@@ -967,8 +970,8 @@ function chipRow(items, onPick, label) {
   return w;
 }
 
-/* رسم الحر بالفرشاة الملونة */
-function initDraw(cv, getColor, width = 7) {
+/* رسم الحر بالفرشاة الملونة للموبايل */
+function initDraw(cv, getColor, width = 6) {
   const ctx = cv.getContext('2d');
   let drawing = false;
   const fit = () => {
@@ -1021,7 +1024,7 @@ function recorder() {
   p.textContent = '▶ استمع';
   p.style.display = 'none';
   const note = document.createElement('span');
-  note.style.fontSize = '12px'; note.style.fontWeight = '800';
+  note.style.fontSize = '11px'; note.style.fontWeight = '800';
   let rec, chunks = [], url = null, on = false;
 
   b.onclick = async () => {
@@ -1041,11 +1044,11 @@ function recorder() {
         s.getTracks().forEach(t => t.stop());
       };
       rec.start(); on = true;
-      b.textContent = '⏹️ إيقاف التسجيل';
+      b.textContent = '⏹️ إيقاف';
       b.className = 'btn mint';
-      note.textContent = 'جارٍ التسجيل الآن…';
+      note.textContent = 'جارٍ التسجيل…';
     } catch (err) {
-      note.textContent = 'الميكروفون غير متاح — يمكنك قول الإجابة بصوت عالي ومسموع 😊';
+      note.textContent = 'الميكروفون غير متاح — قل إجابتك بصوتك مسموع 😊';
     }
   };
   p.onclick = () => { if (url) new Audio(url).play(); };
@@ -1120,14 +1123,14 @@ function rocketSVG(cfg) {
 /* ============ 1. الغلاف والمقدمة ============ */
 PAGES.push({
   html: `<div class="pg dark"><div class="cover">
-  <div class="float" style="font-size:clamp(50px, 8vw, 75px)">🚀</div>
+  <div class="float" style="font-size:clamp(48px, 8vw, 70px)">🚀</div>
   <div class="sub">المجلة الإلكترونية الأولى لأطفال الروضة 🌟</div>
   <h1>مغامرة إنقاذ<br>الكوكب الأزرق</h1>
   <div class="meta">
     <span class="tag">🌌 الفضاء والنجوم</span><span class="tag">👶 5–6 سنوات</span>
     <span class="tag">🎮 16 نشاطًا تفاعليًا</span><span class="tag">🏅 وسام بطل الفضاء</span>
   </div>
-  <div class="row" style="justify-content:center;margin-top:10px">
+  <div class="row" style="justify-content:center;margin-top:8px">
     <input type="text" id="kidName" placeholder="اكتب اسمك يا بطل الفضاء">
     <button class="btn mint" id="startBtn">ابدأ الرحلة ◀</button>
   </div>
@@ -1153,7 +1156,7 @@ PAGES.push({
     <div class="mini">💡 عاداتنا الثلاث في رحلتنا: <u>الإبداع والابتكار</u> — <u>المثابرة</u> — <u>المرونة والتكيّف</u>.</div>
   </div>
   <div class="col side center" style="align-items:center">
-    <div class="float" style="font-size:clamp(60px, 9vw, 110px)">🌍</div>
+    <div class="float" style="font-size:clamp(55px, 8vw, 100px)">🌍</div>
     <div class="big">الكوكب الأزرق ينتظر بطلًا شجاعًا!</div>
   </div>
 </div></div>`,
@@ -1213,7 +1216,7 @@ PAGES.push({
 
     const ew = document.createElement('div'); ew.className = 'tools'; ew.innerHTML = '<div class="lbl">إضافات فائقة</div>';
     [['☀️ ألواح شمسية', 'solar'], ['🦾 ذراع روبوتية', 'arm']].forEach(([lbl, k]) => {
-      const b = document.createElement('button'); b.className = 'chip'; b.style.fontSize = '13px'; b.textContent = lbl;
+      const b = document.createElement('button'); b.className = 'chip'; b.style.fontSize = '12px'; b.textContent = lbl;
       b.onclick = () => { cfg[k] = !cfg[k]; b.classList.toggle('on', cfg[k]); draw(); }; ew.appendChild(b);
     });
 
@@ -1224,7 +1227,7 @@ PAGES.push({
       b.onclick = () => { $$('.chip', st).forEach(x => x.classList.remove('on')); b.classList.add('on'); tool = e; }; st.appendChild(b);
     });
     t.append(ew, st);
-    placer(stage, () => tool, 36);
+    placer(stage, () => tool, 34);
 
     $('#fire1', r).onclick = () => { cfg.fire = true; draw(); chime([300, 420, 560, 720]); setTimeout(() => { cfg.fire = false; draw(); }, 1800); };
     $('#rec1', r).append(recorder(), readBtn('صمم صاروخًا لم يصنعه أحد من قبل، ثم أخبرني باسمه وما المهمة التي يستطيع القيام بها.'));
@@ -1262,7 +1265,7 @@ PAGES.push({
     const groups = { 'الطبيعة 🌿': ['🌊', '⛰️', '🌲', '🌺', '💧', '🌾'], 'المباني 🏠': ['🏠', '🏰', '🏙️', '⛺'], 'الكائنات 👾': ['🤖', '👽', '🐙', '🦄', '🐣'], 'السماء ✨': ['🌙', '☁️', '🌈', '⭐', '☄️'] };
     const t = $('#t2', r);
     Object.entries(groups).forEach(([lbl, arr]) => { t.append(chipRow(arr, v => tool = v, lbl)); });
-    placer(stage, () => tool, 40);
+    placer(stage, () => tool, 38);
     $('#rec2', r).append(recorder(), readBtn('اجعل هذا الكوكب مليئًا بالحياة. من يعيش هنا؟ وكيف يقضي سكانه يومهم؟'));
     $('#clr2', r).onclick = () => { $$('.item', stage).forEach(x => x.remove()); };
     $('#done2', r).onclick = () => {
@@ -1294,7 +1297,7 @@ PAGES.push({
     spots.forEach(([em, x, y], i) => {
       const d = document.createElement('div');
       d.className = 'item';
-      d.style.cssText = `left:${x}%;top:${y}%;font-size:48px;cursor:pointer`;
+      d.style.cssText = `left:${x}%;top:${y}%;font-size:44px;cursor:pointer`;
       d.textContent = em;
       d.onclick = () => {
         if (found) return;
@@ -1428,14 +1431,14 @@ PAGES.push({
    <div class="fb" id="f6"></div>
  </div>
  <div class="col main"><div class="stage" id="s6">
-   <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(55px, 8vw, 85px);gap:10px;pointer-events:none">👽<span style="font-size:clamp(40px, 6vw, 65px)">🛸</span><span style="font-size:clamp(30px, 4vw, 45px)">💨</span></div>
+   <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(50px, 8vw, 80px);gap:10px;pointer-events:none">👽<span style="font-size:clamp(36px, 6vw, 60px)">🛸</span><span style="font-size:clamp(28px, 4vw, 42px)">💨</span></div>
    <div class="grid3" id="g6" style="align-content:end;position:absolute;inset:auto 0 0 0;height:auto"></div>
  </div></div>
 </div></div>`,
   init(r) {
     const g = $('#g6', r), fb = $('#f6', r); let picked = null;
     [['🔧', 'مفتاح ربط'], ['🪢', 'حبل متين'], ['🔋', 'بطارية طاقة'], ['🧲', 'مغناطيس'], ['🚀', 'صاروخي'], ['🩹', 'شريط لاصق']].forEach(([em, n]) => {
-      const c = document.createElement('div'); c.className = 'card'; c.style.fontSize = '13px'; c.innerHTML = `<div class="em">${em}</div>${n}`;
+      const c = document.createElement('div'); c.className = 'card'; c.style.fontSize = '12px'; c.innerHTML = `<div class="em">${em}</div>${n}`;
       c.onclick = () => {
         $$('.card', g).forEach(x => x.classList.remove('ok'));
         c.classList.add('ok'); picked = n; chime([600]);
@@ -1463,13 +1466,13 @@ PAGES.push({
    <div class="fb" id="f7"></div>
  </div>
  <div class="col main"><div class="stage night" id="s7" style="display:flex;align-items:center;justify-content:center">
-   <div id="dev7" style="text-align:center;font-size:clamp(50px, 7vw, 76px);line-height:1.15"></div>
+   <div id="dev7" style="text-align:center;font-size:clamp(45px, 7vw, 72px);line-height:1.15"></div>
  </div></div>
 </div></div>`,
   init(r) {
     const fb = $('#f7', r), dev = $('#dev7', r), t = $('#t7', r);
     const pick = { p: null, a: null, b: null }; let attempts = 0;
-    const draw = () => dev.innerHTML = `<div>${pick.a || '📡'}</div><div>${pick.b || '📦'}</div><div style="font-size:42px">${pick.p || '🔋'}</div>`;
+    const draw = () => dev.innerHTML = `<div>${pick.a || '📡'}</div><div>${pick.b || '📦'}</div><div style="font-size:38px">${pick.p || '🔋'}</div>`;
     draw();
     t.append(chipRow(['🔋', '☀️', '⚡', '🌟'], v => { pick.p = v; draw(); }, 'مصدر الطاقة'));
     t.append(chipRow(['📡', '🛰️', '📶', '🎈'], v => { pick.a = v; draw(); }, 'الهوائي'));
@@ -1500,9 +1503,9 @@ PAGES.push({
    <div class="fb" id="f8"></div>
  </div>
  <div class="col main">
-   <div class="stage" id="s8" style="background:#fff;display:flex;flex-direction:column;gap:8px;padding:10px">
-     <div id="strip8" style="display:flex;gap:8px;flex:1"></div>
-     <div id="ends8" style="display:flex;gap:6px"></div>
+   <div class="stage" id="s8" style="background:#fff;display:flex;flex-direction:column;gap:6px;padding:8px">
+     <div id="strip8" style="display:flex;gap:6px;flex:1"></div>
+     <div id="ends8" style="display:flex;gap:5px"></div>
    </div>
  </div>
 </div></div>`,
@@ -1514,8 +1517,8 @@ PAGES.push({
       order.forEach((em, i) => {
         const c = document.createElement('div'); c.className = 'card'; c.style.flex = '1';
         c.innerHTML = `<div class="em">${em}</div>
-        <div class="row" style="justify-content:center"><button class="btn ghost" data-d="1" style="padding:3px 10px">▶</button>
-        <button class="btn ghost" data-d="-1" style="padding:3px 10px">◀</button></div>`;
+        <div class="row" style="justify-content:center"><button class="btn ghost" data-d="1" style="padding:2px 8px;min-height:32px">▶</button>
+        <button class="btn ghost" data-d="-1" style="padding:2px 8px;min-height:32px">◀</button></div>`;
         c.querySelectorAll('button').forEach(b => b.onclick = e => {
           e.stopPropagation();
           const j = i + +b.dataset.d; if (j < 0 || j > 2) return;
@@ -1613,7 +1616,7 @@ PAGES.push({
     });
     t.append(cw, cw2);
     t.append(chipRow(['⭐', '🌟', '🪐', '🌙', '😀', '🐱', '🌈', '❤️', '🔥', '🦄'], v => tool = v, 'ملصقات زينة — اضغط ثم ضعها بجانب الصاروخ'));
-    placer(stage, () => tool, 34);
+    placer(stage, () => tool, 32);
     $('#done10', r).onclick = () => awardStar(10, fb, 'صاروخك يشبهك أنت فقط! هذا هو الإبداع الحقيقي ⭐');
   }
 });
@@ -1634,7 +1637,7 @@ PAGES.push({
   init(r) {
     const stage = $('#s11', r), fb = $('#f11', r); const win = Math.floor(Math.random() * 5); let n = 0, done = false;
     for (let i = 0; i < 5; i++) {
-      const d = document.createElement('div'); d.style.cssText = 'font-size:clamp(48px, 6vw, 68px);cursor:pointer;user-select:none;transition:.3s';
+      const d = document.createElement('div'); d.style.cssText = 'font-size:clamp(42px, 5.5vw, 64px);cursor:pointer;user-select:none;transition:.3s';
       d.textContent = '☁️';
       d.onclick = () => {
         if (done || d.dataset.o) return; n++; $('#tr11', r).textContent = n; d.dataset.o = 1;
@@ -1663,7 +1666,7 @@ PAGES.push({
    <div class="fb" id="f12"></div>
  </div>
  <div class="col main"><div class="stage" id="s12">
-   <div id="alien" style="position:absolute;left:50%;top:20%;transform:translateX(-50%);font-size:clamp(60px, 8vw, 88px)">👾</div>
+   <div id="alien" style="position:absolute;left:50%;top:18%;transform:translateX(-50%);font-size:clamp(54px, 7vw, 82px)">👾</div>
    <div class="grid3" id="g12" style="position:absolute;inset:auto 0 0 0;height:auto"></div>
  </div></div>
 </div></div>`,
@@ -1713,7 +1716,7 @@ PAGES.push({
     stage.appendChild(p);
     let tool = null;
     $('#t13', r).append(chipRow(['🌲', '🏠', '🏞️', '⛰️', '🌙'], v => tool = v, 'العناصر — اضغط ثم ضعها على الكوكب'));
-    placer(stage, () => tool, 40);
+    placer(stage, () => tool, 36);
     $('#rec13', r).append(recorder(), readBtn('كوّن كوكبك كما تحب، ثم أخبرني ماذا يعيش فيه.'));
     $('#done13', r).onclick = () => {
       if ($$('.item', stage).length < 3) return flash(fb, 'ضع ثلاثة عناصر على الأقل على كوكبك 🌍', true);
@@ -1733,15 +1736,15 @@ PAGES.push({
    <div class="fb" id="f14"></div>
  </div>
  <div class="col main"><div class="stage" id="s14">
-   <div style="position:absolute;left:6%;top:72%;font-size:clamp(36px, 5vw, 48px)">🐰</div>
-   <div style="position:absolute;left:84%;top:16%;font-size:clamp(36px, 5vw, 48px)">🚀</div>
-   <div style="position:absolute;left:46%;top:46%;font-size:clamp(40px, 6vw, 56px)">🪨</div>
+   <div style="position:absolute;left:6%;top:72%;font-size:clamp(32px, 4.5vw, 44px)">🐰</div>
+   <div style="position:absolute;left:84%;top:16%;font-size:clamp(32px, 4.5vw, 44px)">🚀</div>
+   <div style="position:absolute;left:46%;top:46%;font-size:clamp(36px, 5.5vw, 52px)">🪨</div>
    <div style="position:absolute;left:8%;top:78%;width:80%;height:3px;background:repeating-linear-gradient(90deg,#94a3b8 0 12px,transparent 12px 24px);transform:rotate(-32deg);transform-origin:left"></div>
    <canvas id="cv14" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
  </div></div>
 </div></div>`,
   init(r) {
-    const cv = $('#cv14', r), fb = $('#f14', r); initDraw(cv, () => '#8b5cf6', 7);
+    const cv = $('#cv14', r), fb = $('#f14', r); initDraw(cv, () => '#8b5cf6', 6);
     $('#clr14', r).onclick = () => { cv.clearAll(); cv._pts = null; };
     $('#go14', r).onclick = () => {
       const p = cv._pts; if (!p || p.length < 8) return flash(fb, 'ارسم الطريق أولًا بإصبعك من الأرنب إلى الصاروخ ✏️', true);
@@ -1775,7 +1778,7 @@ PAGES.push({
 </div></div>`,
   init(r) {
     const cv = $('#cv15', r), gd = $('#guide15', r), fb = $('#f15', r); let color = '#8b5cf6';
-    initDraw(cv, () => color, 6);
+    initDraw(cv, () => color, 5);
     const shapes = {
       'نجمة': '<path d="M200 60 L200 240 M200 60 L170 130 L95 138 L152 186 L134 258 L200 220" fill="none" stroke="#1e295b" stroke-width="6" stroke-linejoin="round"/><path d="M200 60 L230 130 L305 138 L248 186 L266 258 L200 220" fill="none" stroke="#cbd5e1" stroke-width="4" stroke-dasharray="9 9"/>',
       'مركبة': '<path d="M200 40 V270 M200 40 c-40 40-52 100-52 150 h52" fill="none" stroke="#1e295b" stroke-width="6"/><path d="M200 40 c40 40 52 100 52 150 h-52" fill="none" stroke="#cbd5e1" stroke-width="4" stroke-dasharray="9 9"/>',
@@ -1810,12 +1813,12 @@ PAGES.push({
    <div class="row"><button class="btn" id="done16">بطاقتي جاهزة</button><button class="btn ghost" id="print16">🖨️ اطبع البطاقة</button></div>
    <div class="fb" id="f16"></div>
  </div>
- <div class="col main"><div class="stage" id="s16" style="padding:10px;display:flex">
-   <div id="card16" style="flex:1;position:relative;border-radius:18px;background:#38cbfd;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;overflow:hidden;box-shadow:0 6px 16px rgba(0,0,0,0.1)">
-     <div style="font-family:'Baloo Bhaijaan 2';font-size:clamp(22px, 3.5vw, 30px);color:#fff;text-shadow:0 3px 6px rgba(0,0,0,0.2)">🎊 حفلة في الفضاء 🎊</div>
-     <div id="cake16" style="font-size:clamp(45px, 6vw, 65px)">🎂</div>
-     <div id="chars16" style="font-size:clamp(30px, 4vw, 40px)">🧑‍🚀👽🤖</div>
-     <div id="txt16" style="background:#fff;border-radius:12px;padding:6px 14px;font-weight:800;max-width:88%;text-align:center;color:var(--ink);box-shadow:0 4px 10px rgba(0,0,0,0.08)">أدعوكم إلى حفلتي المميزة على القمر!</div>
+ <div class="col main"><div class="stage" id="s16" style="padding:8px;display:flex">
+   <div id="card16" style="flex:1;position:relative;border-radius:16px;background:#38cbfd;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;overflow:hidden;box-shadow:0 5px 14px rgba(0,0,0,0.1)">
+     <div style="font-family:'Baloo Bhaijaan 2';font-size:clamp(20px, 3.2vw, 28px);color:#fff;text-shadow:0 2px 5px rgba(0,0,0,0.2)">🎊 حفلة في الفضاء 🎊</div>
+     <div id="cake16" style="font-size:clamp(40px, 5.5vw, 60px)">🎂</div>
+     <div id="chars16" style="font-size:clamp(26px, 3.5vw, 36px)">🧑‍🚀👽🤖</div>
+     <div id="txt16" style="background:#fff;border-radius:10px;padding:5px 12px;font-weight:800;max-width:90%;text-align:center;color:var(--ink);box-shadow:0 3px 8px rgba(0,0,0,0.08)">أدعوكم إلى حفلتي المميزة على القمر!</div>
    </div>
  </div></div>
 </div></div>`,
@@ -1831,7 +1834,7 @@ PAGES.push({
     t.append(chipRow(['🧑‍🚀👽🤖', '👩‍🚀🐰🌟', '👽👾🛸', '🤖🐱🚀'], v => $('#chars16', r).textContent = v, 'الشخصيات'));
     let tool = null;
     t.append(chipRow(['🎈', '🎊', '✨', '🎁', '⭐', '🌙'], v => tool = v, 'الزينة — اضغط ثم ضعها على البطاقة'));
-    placer(card, () => tool, 32);
+    placer(card, () => tool, 30);
     $('#party', r).oninput = e => $('#txt16', r).textContent = e.target.value || 'أدعوكم إلى حفلتي المميزة على القمر!';
     $('#print16', r).onclick = () => window.print();
     $('#done16', r).onclick = () => awardStar(16, fb, 'دعوة رائعة! أنت الآن جاهز لاستقبال أصدقائك في الفضاء ⭐');
@@ -1841,14 +1844,14 @@ PAGES.push({
 /* ============ 17. التتويج والختام ============ */
 PAGES.push({
   html: `<div class="pg dark"><div class="cover">
-  <div class="float" style="font-size:clamp(55px, 8vw, 80px)">🏅</div>
+  <div class="float" style="font-size:clamp(50px, 7.5vw, 75px)">🏅</div>
   <h1 id="endTitle">قائد الرحلة الفضائية</h1>
-  <div class="sub" id="endName" style="font-size:clamp(16px, 2vw, 22px)"></div>
-  <div class="mini" style="max-width:650px;text-align:center;font-size:clamp(13px, 1.4vw, 16px);background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.3)">
+  <div class="sub" id="endName" style="font-size:clamp(15px, 1.8vw, 21px)"></div>
+  <div class="mini" style="max-width:650px;text-align:center;font-size:clamp(12px, 1.3vw, 15px);background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.3)">
     أنقذنا الكوكب الأزرق معًا! تدرّبت بنجاح على <u>الإبداع والابتكار</u>، و<u>المثابرة</u>، و<u>المرونة والتكيّف</u>.
   </div>
-  <div id="stars17" style="font-size:clamp(26px, 4vw, 38px);letter-spacing:4px"></div>
-  <div class="row" style="justify-content:center;gap:10px">
+  <div id="stars17" style="font-size:clamp(24px, 3.5vw, 36px);letter-spacing:4px"></div>
+  <div class="row" style="justify-content:center;gap:8px">
     <button class="btn mint" id="cheer">🎉 احتفال النصر</button>
     <button class="btn ghost" id="printC">🖨️ طباعة الشهادة</button>
   </div>
@@ -1865,7 +1868,7 @@ PAGES.push({
       for (let i = 0; i < 14; i++) {
         setTimeout(() => {
           const b = document.createElement('div'); b.className = 'burst';
-          b.innerHTML = `<div class="s" style="font-size:${35 + Math.random() * 55}px;transform:translate(${(Math.random() - .5) * 650}px,0)">${rnd(['⭐', '🎉', '🚀', '🌟', '🎊'])}</div>`;
+          b.innerHTML = `<div class="s" style="font-size:${30 + Math.random() * 50}px;transform:translate(${(Math.random() - .5) * 600}px,0)">${rnd(['⭐', '🎉', '🚀', '🌟', '🎊'])}</div>`;
           document.body.appendChild(b);
           setTimeout(() => b.remove(), 1200);
         }, i * 85);
@@ -1877,7 +1880,7 @@ PAGES.push({
 </script>
 
 <script>
-/* ============ تشغيل المجلة والتنقل التفاعلي المتجاوب ============ */
+/* ============ تشغيل المجلة والتنقل التفاعلي المتجاوب للموبايل ============ */
 const book = $('#book'), track = $('#track');
 for (let i = 0; i < 16; i++) {
   if (i) track.insertAdjacentHTML('beforeend', '<div class="link"></div>');
