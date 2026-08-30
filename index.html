@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>🚀 مغامرة إنقاذ الكوكب الأزرق — مجلة الكترونية تفاعلية</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>🚀 مغامرة إنقاذ الكوكب الأزرق — المجلة الإلكترونية المبهجة المتجاوبة</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -26,21 +26,31 @@
   --orange: #ff9f43;
   --card-bg: rgba(255, 255, 255, 0.95);
   --shadow: 0 16px 36px rgba(15, 23, 56, 0.3);
-  --r: 26px;
+  --r: 24px;
 }
 
-* { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+}
 
 body {
-  font-family: 'Tajawal', system-ui, sans-serif;
+  font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
   color: var(--ink);
   background: 
     radial-gradient(1200px 800px at 80% -10%, #312e81 0%, transparent 65%),
     radial-gradient(1000px 700px at 10% 110%, #4c1d95 0%, transparent 60%),
     radial-gradient(800px 500px at 50% 50%, #1e1b4b 0%, #0f172a 100%);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* خلفية النجوم الفضائية المتحركة والفقاعات المبهجة */
@@ -73,7 +83,7 @@ body::before {
   position: fixed;
   pointer-events: none;
   opacity: 0.15;
-  font-size: 140px;
+  font-size: clamp(80px, 12vw, 140px);
   z-index: 0;
   animation: floatCloud 22s linear infinite;
 }
@@ -84,10 +94,13 @@ body::before {
   to { transform: translateX(-120vw); }
 }
 
-/* ===== الهيكل العام ===== */
+/* ===== الهيكل العام التكيفي Auto Responsive Shell ===== */
 .shell {
   position: relative;
-  height: 100%;
+  width: 100%;
+  max-width: 1280px;
+  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,14 +112,15 @@ body::before {
 
 /* ===== شريط التتبع والعداد العلوي (HUD) ===== */
 .hud {
-  width: min(1180px, 98vw);
+  width: 100%;
+  max-width: 1180px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.1));
   border: 2px solid rgba(255, 255, 255, 0.35);
   border-radius: 999px;
-  padding: 8px 20px;
+  padding: 6px 16px;
   backdrop-filter: blur(12px);
   color: #fff;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
@@ -114,7 +128,7 @@ body::before {
 }
 .hud h1 {
   font-family: 'Baloo Bhaijaan 2';
-  font-size: clamp(15px, 1.8vw, 22px);
+  font-size: clamp(13px, 1.6vw, 20px);
   margin: 0;
   font-weight: 800;
   letter-spacing: .2px;
@@ -126,9 +140,9 @@ body::before {
   flex: 1;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
   position: relative;
-  height: 28px;
+  height: 24px;
 }
 .track .link {
   flex: 1;
@@ -137,8 +151,8 @@ body::before {
   border-radius: 99px;
 }
 .track .dot {
-  width: 22px;
-  height: 22px;
+  width: clamp(14px, 1.8vw, 22px);
+  height: clamp(14px, 1.8vw, 22px);
   flex: none;
   position: relative;
   transition: transform 0.3s;
@@ -153,29 +167,31 @@ body::before {
 .track .dot.on svg {
   filter: none;
   opacity: 1;
-  transform: scale(1.4) rotate(12deg);
+  transform: scale(1.35) rotate(12deg);
   filter: drop-shadow(0 0 6px #ffea00);
 }
 .count {
   font-family: 'Baloo Bhaijaan 2';
   font-weight: 800;
-  font-size: clamp(16px, 1.8vw, 20px);
+  font-size: clamp(14px, 1.6vw, 18px);
   white-space: nowrap;
   background: linear-gradient(135deg, #fffae6, #ffe066);
   color: #5c3d00;
-  padding: 3px 14px;
+  padding: 2px 12px;
   border-radius: 999px;
   box-shadow: 0 3px 0 #b38000;
 }
 
-/* ===== كتاب المجلة الكرتوني (Book Container) ===== */
+/* ===== كتاب المجلة الكرتوني الذكي (Book Container) ===== */
 .book-wrap {
-  width: min(1180px, 98vw);
+  width: 100%;
+  max-width: 1180px;
   aspect-ratio: 16 / 10.2;
-  max-height: 78vh;
+  max-height: calc(100dvh - 130px);
   position: relative;
   perspective: 2400px;
   flex: 1;
+  min-height: 0;
 }
 .book {
   position: absolute;
@@ -189,11 +205,11 @@ body::before {
   overflow: hidden;
   transform-origin: right center;
   backface-visibility: hidden;
-  transition: transform .9s cubic-bezier(.34, 1.3, .64, 1);
+  transition: transform .85s cubic-bezier(.34, 1.25, .64, 1);
   box-shadow: var(--shadow);
   background: var(--sky);
   pointer-events: none;
-  border: 4px solid rgba(255, 255, 255, 0.8);
+  border: 4px solid rgba(255, 255, 255, 0.85);
 }
 .sheet.turned {
   transform: rotateY(180deg);
@@ -219,11 +235,12 @@ body::before {
   inset: 0;
   display: flex;
   flex-direction: column;
-  padding: 14px 20px;
+  padding: clamp(10px, 2vw, 16px) clamp(12px, 2.2vw, 20px);
   background: 
     radial-gradient(800px 500px at 85% 10%, #89e2ff 0%, transparent 65%),
     linear-gradient(180deg, #38cbfd 0%, #11a3e3 100%);
   color: var(--ink);
+  overflow-y: auto;
 }
 .pg.dark {
   background: 
@@ -254,11 +271,11 @@ body::before {
 .pg-head {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex: none;
-  background: rgba(255, 255, 255, 0.35);
-  padding: 6px 14px;
-  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.38);
+  padding: 5px 12px;
+  border-radius: 16px;
   backdrop-filter: blur(8px);
   border: 2px solid rgba(255, 255, 255, 0.6);
 }
@@ -271,16 +288,16 @@ body::before {
   font-weight: 800;
   color: #4a2c00;
   background: linear-gradient(135deg, #ffe066, #ffc107);
-  border-radius: 12px;
-  padding: 4px 14px;
-  font-size: 15px;
-  box-shadow: 0 4px 0 #cc9600;
+  border-radius: 10px;
+  padding: 3px 12px;
+  font-size: clamp(12px, 1.4vw, 15px);
+  box-shadow: 0 3px 0 #cc9600;
   white-space: nowrap;
 }
 .pg h2 {
   font-family: 'Baloo Bhaijaan 2';
   font-weight: 800;
-  font-size: clamp(18px, 2.4vw, 30px);
+  font-size: clamp(16px, 2.2vw, 28px);
   margin: 0;
   color: #ffffff;
   text-shadow: 0 3px 8px rgba(10, 25, 70, 0.4);
@@ -295,25 +312,25 @@ body::before {
   color: var(--purple-dark);
   font-weight: 800;
   border-radius: 999px;
-  padding: 5px 16px;
-  font-size: 13px;
+  padding: 4px 14px;
+  font-size: clamp(11px, 1.2vw, 13px);
   white-space: nowrap;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   border: 2px solid #e9d5ff;
 }
 
-/* جسم الصفحة والتنسيقات الداخليّة */
+/* جسم الصفحة والتنسيقات الداخليّة المتجاوبة */
 .body {
   flex: 1;
   display: flex;
-  gap: 14px;
+  gap: 12px;
   min-height: 0;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 .col {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   min-height: 0;
 }
 .col.side {
@@ -328,24 +345,24 @@ body::before {
 /* ===== فقاعة كلام شخصية "غيث" (Ghaith Speech Bubble) ===== */
 .say {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: flex-start;
   background: #ffffff;
-  border-radius: 22px;
-  padding: 12px 16px;
-  box-shadow: 0 10px 24px rgba(15, 23, 56, 0.12);
+  border-radius: 18px;
+  padding: 10px 14px;
+  box-shadow: 0 8px 20px rgba(15, 23, 56, 0.1);
   position: relative;
-  font-size: clamp(13px, 1.3vw, 16px);
-  line-height: 1.6;
+  font-size: clamp(12px, 1.25vw, 15px);
+  line-height: 1.5;
   font-weight: 700;
   color: var(--ink);
   border: 3px solid #e2e8f0;
 }
 .say .av {
-  width: 58px;
-  height: 58px;
+  width: clamp(40px, 4vw, 54px);
+  height: clamp(40px, 4vw, 54px);
   flex: none;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.12));
   animation: bounceAvatar 3s ease-in-out infinite alternate;
 }
 @keyframes bounceAvatar {
@@ -355,15 +372,15 @@ body::before {
 .say b { color: var(--purple-dark); font-weight: 900; }
 
 .mini {
-  font-size: 13px;
+  font-size: clamp(11px, 1.15vw, 13px);
   color: #2d3748;
-  line-height: 1.6;
+  line-height: 1.5;
   background: rgba(255, 255, 255, 0.88);
-  border-radius: 16px;
-  padding: 10px 14px;
+  border-radius: 14px;
+  padding: 8px 12px;
   font-weight: 700;
   border: 2px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 .mini u {
   text-decoration: none;
@@ -379,10 +396,10 @@ body::before {
   flex: 1;
   position: relative;
   background: #ffffff;
-  border-radius: 22px;
+  border-radius: 20px;
   overflow: hidden;
-  min-height: 0;
-  box-shadow: inset 0 0 0 3px #e2e8f0, 0 10px 20px rgba(0,0,0,0.06);
+  min-height: 160px;
+  box-shadow: inset 0 0 0 3px #e2e8f0, 0 8px 16px rgba(0,0,0,0.05);
 }
 .stage.night {
   background: linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%);
@@ -393,122 +410,123 @@ body::before {
 .tools {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 18px;
-  padding: 10px;
+  border-radius: 16px;
+  padding: 8px;
   border: 2px solid #e2e8f0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 .tools .lbl {
   width: 100%;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   color: var(--purple-dark);
 }
 .chip {
-  border: 3px solid #e2e8f0;
+  border: 2px solid #e2e8f0;
   background: #f8fafc;
-  border-radius: 14px;
-  padding: 6px 10px;
+  border-radius: 12px;
+  padding: 4px 8px;
   cursor: pointer;
-  font-size: 22px;
+  font-size: clamp(18px, 2.2vw, 24px);
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
-  min-height: 42px;
+  min-width: 38px;
+  min-height: 38px;
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .chip:hover {
-  transform: translateY(-3px) scale(1.1);
+  transform: translateY(-2px) scale(1.08);
   background: #ffffff;
   border-color: var(--sky);
 }
 .chip.on {
   border-color: var(--purple-dark);
   background: #f3e8ff;
-  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.25);
-  transform: scale(1.1);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+  transform: scale(1.08);
 }
-.chip svg { width: 32px; height: 32px; display: block; }
+.chip svg { width: 28px; height: 28px; display: block; }
 
 .sw {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   border: 3px solid #ffffff;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.18);
   transition: transform 0.2s;
 }
-.sw:hover { transform: scale(1.2); }
-.sw.on { outline: 4px solid var(--purple-dark); transform: scale(1.25); }
+.sw:hover { transform: scale(1.15); }
+.sw.on { outline: 3px solid var(--purple-dark); transform: scale(1.2); }
 
 /* ===== الأزرار ثلاثية الأبعاد المبهجة (3D Tactile Buttons) ===== */
 .btn {
   font-family: 'Baloo Bhaijaan 2';
   font-weight: 800;
-  font-size: 16px;
+  font-size: clamp(13px, 1.4vw, 16px);
   border: 0;
   cursor: pointer;
   color: #3b2500;
   background: linear-gradient(180deg, #ffdf6d 0%, #ffc107 100%);
-  border-radius: 16px;
-  padding: 10px 20px;
-  box-shadow: 0 6px 0 var(--sun-shadow), 0 10px 16px rgba(0,0,0,0.15);
+  border-radius: 14px;
+  padding: 8px 16px;
+  box-shadow: 0 5px 0 var(--sun-shadow), 0 8px 14px rgba(0,0,0,0.12);
   transition: all 0.15s ease-out;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   user-select: none;
+  white-space: nowrap;
 }
 .btn:hover {
   transform: translateY(-2px);
   filter: brightness(1.05);
 }
 .btn:active {
-  transform: translateY(4px);
+  transform: translateY(3px);
   box-shadow: 0 2px 0 var(--sun-shadow);
 }
 .btn.ghost {
   background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
   color: var(--ink);
-  box-shadow: 0 6px 0 #cbd5e1, 0 10px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 5px 0 #cbd5e1, 0 8px 14px rgba(0,0,0,0.06);
 }
 .btn.ghost:active { box-shadow: 0 2px 0 #cbd5e1; }
 
 .btn.mint {
   background: linear-gradient(180deg, #6ee7b7 0%, #10b981 100%);
   color: #022c22;
-  box-shadow: 0 6px 0 var(--mint-shadow), 0 10px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 5px 0 var(--mint-shadow), 0 8px 14px rgba(0,0,0,0.12);
 }
 .btn.mint:active { box-shadow: 0 2px 0 var(--mint-shadow); }
 
 .btn.coral {
   background: linear-gradient(180deg, #ff8796 0%, #ff4757 100%);
   color: #ffffff;
-  box-shadow: 0 6px 0 var(--coral-shadow), 0 10px 16px rgba(0,0,0,0.15);
-  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 0 var(--coral-shadow), 0 8px 14px rgba(0,0,0,0.12);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 .btn.coral:active { box-shadow: 0 2px 0 var(--coral-shadow); }
 
 .btn[disabled] { opacity: .55; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
 
-.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
 
 input[type=text] {
   font-family: 'Tajawal';
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
-  border: 3px solid #cbd5e1;
-  border-radius: 14px;
-  padding: 10px 14px;
+  border: 2.5px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 8px 12px;
   outline: 0;
-  min-width: 170px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+  min-width: 140px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
   transition: border-color 0.2s;
 }
 input[type=text]:focus { border-color: var(--purple-dark); }
@@ -516,32 +534,32 @@ input[type=text]:focus { border-color: var(--purple-dark); }
 /* صندوق التغذية الراجعة المشجّع */
 .fb {
   background: #ffffff;
-  border-right: 8px solid var(--mint);
-  border-radius: 16px;
-  padding: 12px 16px;
-  font-size: 15px;
+  border-right: 6px solid var(--mint);
+  border-radius: 14px;
+  padding: 10px 14px;
+  font-size: 14px;
   font-weight: 700;
-  line-height: 1.6;
+  line-height: 1.5;
   display: none;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
   color: var(--ink);
 }
 .fb.show { display: block; animation: popBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .fb.warn { border-right-color: var(--sun); background: #fffdf0; }
 @keyframes popBounce {
-  from { transform: scale(0.9) translateY(8px); opacity: 0; }
+  from { transform: scale(0.92) translateY(6px); opacity: 0; }
   to { transform: scale(1) translateY(0); opacity: 1; }
 }
 
 /* العناصر الموضوعة على التخطيط (Placed Draggables) */
 .item {
   position: absolute;
-  font-size: 42px;
+  font-size: clamp(32px, 4vw, 44px);
   cursor: grab;
   user-select: none;
   touch-action: none;
   line-height: 1;
-  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.25));
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
   transition: transform 0.15s;
 }
 .item:hover { transform: scale(1.15); }
@@ -551,27 +569,27 @@ input[type=text]:focus { border-color: var(--purple-dark); }
 .nav {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   flex: none;
   background: rgba(255, 255, 255, 0.15);
-  padding: 6px 16px;
+  padding: 5px 14px;
   border-radius: 999px;
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
-.nav .btn { min-width: 140px; font-size: 17px; }
+.nav .btn { min-width: 110px; font-size: clamp(14px, 1.5vw, 17px); }
 .pgno {
   color: #ffffff;
   font-family: 'Baloo Bhaijaan 2';
   font-weight: 800;
-  font-size: 17px;
-  min-width: 80px;
+  font-size: clamp(14px, 1.6vw, 17px);
+  min-width: 70px;
   text-align: center;
   text-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 .hint {
   color: #e2e8f0;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   text-align: center;
   opacity: .9;
@@ -585,46 +603,46 @@ input[type=text]:focus { border-color: var(--purple-dark); }
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 14px;
+  gap: 12px;
   height: 100%;
 }
 .cover h1 {
   font-family: 'Baloo Bhaijaan 2';
-  font-size: clamp(32px, 4.8vw, 60px);
+  font-size: clamp(28px, 4.5vw, 56px);
   color: #ffffff;
   margin: 0;
   line-height: 1.15;
-  text-shadow: 0 8px 0 rgba(10, 25, 70, 0.4), 0 0 24px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 6px 0 rgba(10, 25, 70, 0.4), 0 0 20px rgba(255, 255, 255, 0.3);
 }
 .cover .sub {
   color: #ffe066;
   font-weight: 900;
-  font-size: clamp(16px, 1.8vw, 22px);
+  font-size: clamp(14px, 1.7vw, 20px);
   background: rgba(255, 255, 255, 0.15);
-  padding: 4px 18px;
+  padding: 4px 16px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 .cover .meta {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
 }
 .tag {
   background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
   color: #fff;
   border-radius: 999px;
-  padding: 6px 16px;
-  font-size: 14px;
+  padding: 4px 14px;
+  font-size: clamp(11px, 1.2vw, 14px);
   font-weight: 800;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 .float { animation: floatAnim 3.5s ease-in-out infinite; }
 @keyframes floatAnim {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-16px) rotate(4deg); }
+  50% { transform: translateY(-14px) rotate(4deg); }
 }
 
 /* ===== تأثير النجوم الطائرة والاحتفالية (Star Burst FX) ===== */
@@ -638,46 +656,113 @@ input[type=text]:focus { border-color: var(--purple-dark); }
   z-index: 999;
 }
 .burst .s {
-  font-size: 110px;
+  font-size: clamp(70px, 12vw, 110px);
   animation: burstAnim 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   filter: drop-shadow(0 0 20px #ffea00);
 }
 @keyframes burstAnim {
   0% { transform: scale(.1) rotate(-45deg); opacity: 0; }
-  35% { transform: scale(1.4) rotate(12deg); opacity: 1; }
-  100% { transform: scale(.9) translateY(-180px); opacity: 0; }
+  35% { transform: scale(1.3) rotate(12deg); opacity: 1; }
+  100% { transform: scale(.9) translateY(-160px); opacity: 0; }
 }
 
 canvas { touch-action: none; display: block; }
 .center { display: flex; align-items: center; justify-content: center; }
-.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 12px; height: 100%; }
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 10px;
+  padding: 10px;
+  height: 100%;
+}
 
 .card {
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   cursor: pointer;
   font-weight: 800;
-  font-size: 16px;
+  font-size: clamp(12px, 1.3vw, 15px);
   color: var(--ink);
-  box-shadow: 0 8px 0 #cbd5e1, 0 10px 16px rgba(0,0,0,0.06);
-  border: 3px solid #f1f5f9;
+  box-shadow: 0 6px 0 #cbd5e1, 0 8px 14px rgba(0,0,0,0.06);
+  border: 2.5px solid #f1f5f9;
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  padding: 12px;
+  padding: 10px;
   text-align: center;
 }
-.card:hover { transform: translateY(-4px) scale(1.02); border-color: var(--sky); }
-.card:active { transform: translateY(4px); box-shadow: 0 2px 0 #cbd5e1; }
-.card .em { font-size: 52px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
-.card.ok { background: #d1fae5; box-shadow: 0 8px 0 #10b981; border-color: #34d399; }
-.card.no { background: #ffe4e6; box-shadow: 0 8px 0 #f43f5e; border-color: #fb7185; animation: shake 0.4s; }
-@keyframes shake { 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
+.card:hover { transform: translateY(-3px) scale(1.02); border-color: var(--sky); }
+.card:active { transform: translateY(3px); box-shadow: 0 2px 0 #cbd5e1; }
+.card .em { font-size: clamp(36px, 4vw, 50px); filter: drop-shadow(0 3px 5px rgba(0,0,0,0.1)); }
+.card.ok { background: #d1fae5; box-shadow: 0 6px 0 #10b981; border-color: #34d399; }
+.card.no { background: #ffe4e6; box-shadow: 0 6px 0 #f43f5e; border-color: #fb7185; animation: shake 0.4s; }
+@keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
 
-.big { font-size: clamp(16px, 1.8vw, 22px); font-weight: 800; color: #fff; text-align: center; text-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+.big { font-size: clamp(14px, 1.6vw, 20px); font-weight: 800; color: #fff; text-align: center; text-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+
+/* ===== قواعد التجاوب التلقائي للشاشات المتوسطة والصغيرة Auto Responsive Rules ===== */
+@media (max-width: 860px) {
+  .shell {
+    height: 100vh;
+    height: 100dvh;
+    padding: 6px 8px;
+    gap: 6px;
+  }
+  .book-wrap {
+    aspect-ratio: auto;
+    max-height: none;
+    height: 100%;
+    min-height: calc(100dvh - 120px);
+  }
+  .sheet {
+    border-width: 3px;
+    border-radius: 18px;
+  }
+  .body {
+    flex-direction: column !important;
+    gap: 8px;
+    overflow-y: auto;
+  }
+  .col.side {
+    width: 100% !important;
+  }
+  .col.main {
+    width: 100% !important;
+    flex: 1;
+    min-height: 220px;
+  }
+  .stage {
+    min-height: 180px;
+  }
+  .say {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  .hud {
+    padding: 4px 12px;
+  }
+}
+
+@media (max-height: 640px) {
+  .shell {
+    padding: 4px 6px;
+    gap: 4px;
+  }
+  .hud h1 { font-size: 13px; }
+  .count { font-size: 13px; padding: 1px 10px; }
+  .pg { padding: 8px 12px; }
+  .pg-head { padding: 3px 10px; }
+  .badge { font-size: 12px; padding: 2px 8px; }
+  .pg h2 { font-size: 16px; }
+  .say { padding: 6px 10px; }
+  .say .av { width: 34px; height: 34px; }
+  .mini { padding: 5px 10px; font-size: 11px; }
+  .btn { padding: 6px 12px; font-size: 13px; }
+  .nav .btn { min-width: 95px; padding: 6px 10px; }
+}
 
 /* طباعة الشهادة */
 @media print {
@@ -696,14 +781,14 @@ canvas { touch-action: none; display: block; }
 <div class="bg-cloud c2">☁️</div>
 
 <div class="shell">
-  <!-- HUD العلوي للتتبع والنجوم -->
+  <!-- HUD العلوي للتتبع والنجوم المتجاوب -->
   <div class="hud">
     <h1>🚀 مغامرة إنقاذ الكوكب الأزرق</h1>
     <div class="track" id="track"></div>
     <div class="count"><span id="starCount">0</span>/16 ⭐</div>
   </div>
 
-  <!-- حاوي كتاب المجلة -->
+  <!-- حاوي كتاب المجلة المتجاوب -->
   <div class="book-wrap"><div class="book" id="book"></div></div>
 
   <!-- شريط التنقل بين الصفحات -->
@@ -722,7 +807,7 @@ const State = { stars: new Set(), childName: '' };
 </script>
 
 <script>
-/* ============ الدوال المساعدة والتحكم بالتفاعل ============ */
+/* ============ الدوال المساعدة والتحكم بالتفاعل المتجاوب ============ */
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const rnd = (a) => a[Math.floor(Math.random() * a.length)];
@@ -782,7 +867,7 @@ function speak(txt) {
 function readBtn(txt) {
   const b = document.createElement('button');
   b.className = 'btn ghost';
-  b.style.fontSize = '14px';
+  b.style.fontSize = '13px';
   b.innerHTML = '🔊 اسمع التعليمات';
   b.onclick = () => speak(txt);
   return b;
@@ -818,7 +903,7 @@ function paintTrack() {
   $$('#track .dot').forEach((d, i) => d.classList.toggle('on', State.stars.has(i + 1)));
 }
 
-/* دعم السحب والإسقاط باللمس والفأرة */
+/* دعم السحب والإسقاط باللمس والفأرة المتجاوب */
 function makeDraggable(node, box) {
   let sx, sy, ox, oy;
   const down = e => {
@@ -936,7 +1021,7 @@ function recorder() {
   p.textContent = '▶ استمع';
   p.style.display = 'none';
   const note = document.createElement('span');
-  note.style.fontSize = '13px'; note.style.fontWeight = '800';
+  note.style.fontSize = '12px'; note.style.fontWeight = '800';
   let rec, chunks = [], url = null, on = false;
 
   b.onclick = async () => {
@@ -1035,7 +1120,7 @@ function rocketSVG(cfg) {
 /* ============ 1. الغلاف والمقدمة ============ */
 PAGES.push({
   html: `<div class="pg dark"><div class="cover">
-  <div class="float" style="font-size:75px">🚀</div>
+  <div class="float" style="font-size:clamp(50px, 8vw, 75px)">🚀</div>
   <div class="sub">المجلة الإلكترونية الأولى لأطفال الروضة 🌟</div>
   <h1>مغامرة إنقاذ<br>الكوكب الأزرق</h1>
   <div class="meta">
@@ -1063,12 +1148,12 @@ PAGES.push({
 <div class="body">
   <div class="col main">
     ${say('بينما كنت أستكشف الفضاء، وصلتني رسالة عاجلة من <b>الكوكب الأزرق</b>: محطة الفضاء تعطّلت، والنجوم التي تضيء الطريق ضاعت في المجرة!')}
-    <div class="mini" style="font-size:15px">أحتاج مساعدتك الشجاعة في <u>16 مهمة تفاعلية</u>. في نهاية كل مهمة تربح <u>نجمة مضيئة ⭐</u>، وعندما تجمع النجوم تصبح <u>قائد الرحلة الفضائية</u> 🏅</div>
+    <div class="mini">أحتاج مساعدتك الشجاعة في <u>16 مهمة تفاعلية</u>. في نهاية كل مهمة تربح <u>نجمة مضيئة ⭐</u>، وعندما تجمع النجوم تصبح <u>قائد الرحلة الفضائية</u> 🏅</div>
     <div class="row" id="introRow"></div>
     <div class="mini">💡 عاداتنا الثلاث في رحلتنا: <u>الإبداع والابتكار</u> — <u>المثابرة</u> — <u>المرونة والتكيّف</u>.</div>
   </div>
   <div class="col side center" style="align-items:center">
-    <div class="float" style="font-size:110px">🌍</div>
+    <div class="float" style="font-size:clamp(60px, 9vw, 110px)">🌍</div>
     <div class="big">الكوكب الأزرق ينتظر بطلًا شجاعًا!</div>
   </div>
 </div></div>`,
@@ -1128,7 +1213,7 @@ PAGES.push({
 
     const ew = document.createElement('div'); ew.className = 'tools'; ew.innerHTML = '<div class="lbl">إضافات فائقة</div>';
     [['☀️ ألواح شمسية', 'solar'], ['🦾 ذراع روبوتية', 'arm']].forEach(([lbl, k]) => {
-      const b = document.createElement('button'); b.className = 'chip'; b.style.fontSize = '14px'; b.textContent = lbl;
+      const b = document.createElement('button'); b.className = 'chip'; b.style.fontSize = '13px'; b.textContent = lbl;
       b.onclick = () => { cfg[k] = !cfg[k]; b.classList.toggle('on', cfg[k]); draw(); }; ew.appendChild(b);
     });
 
@@ -1177,7 +1262,7 @@ PAGES.push({
     const groups = { 'الطبيعة 🌿': ['🌊', '⛰️', '🌲', '🌺', '💧', '🌾'], 'المباني 🏠': ['🏠', '🏰', '🏙️', '⛺'], 'الكائنات 👾': ['🤖', '👽', '🐙', '🦄', '🐣'], 'السماء ✨': ['🌙', '☁️', '🌈', '⭐', '☄️'] };
     const t = $('#t2', r);
     Object.entries(groups).forEach(([lbl, arr]) => { t.append(chipRow(arr, v => tool = v, lbl)); });
-    placer(stage, () => tool, 42);
+    placer(stage, () => tool, 40);
     $('#rec2', r).append(recorder(), readBtn('اجعل هذا الكوكب مليئًا بالحياة. من يعيش هنا؟ وكيف يقضي سكانه يومهم؟'));
     $('#clr2', r).onclick = () => { $$('.item', stage).forEach(x => x.remove()); };
     $('#done2', r).onclick = () => {
@@ -1209,7 +1294,7 @@ PAGES.push({
     spots.forEach(([em, x, y], i) => {
       const d = document.createElement('div');
       d.className = 'item';
-      d.style.cssText = `left:${x}%;top:${y}%;font-size:56px;cursor:pointer`;
+      d.style.cssText = `left:${x}%;top:${y}%;font-size:48px;cursor:pointer`;
       d.textContent = em;
       d.onclick = () => {
         if (found) return;
@@ -1219,7 +1304,7 @@ PAGES.push({
           found = true; d.textContent = '⭐'; d.style.transform = 'scale(1.4)';
           awardStar(3, fb, 'أعجبتني محاولاتك المتعددة… لقد وجدت النجمة لأنك <b>لم تستسلم</b>! ⭐');
         } else {
-          d.style.transition = '.3s'; d.style.transform = 'translateY(-16px) rotate(-15deg)';
+          d.style.transition = '.3s'; d.style.transform = 'translateY(-14px) rotate(-15deg)';
           setTimeout(() => d.style.transform = '', 400);
           chime([240]);
           flash(fb, rnd(['ليست هنا… لكن المحاولة ممتازة، جرّب مكانًا آخر 💪', 'لم نجدها بعد… المثابرون يجربون مرة أخرى!', 'اقتربت جداً! ابحث في مكان آخر 🌟']), true);
@@ -1343,14 +1428,14 @@ PAGES.push({
    <div class="fb" id="f6"></div>
  </div>
  <div class="col main"><div class="stage" id="s6">
-   <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:85px;gap:12px;pointer-events:none">👽<span style="font-size:65px">🛸</span><span style="font-size:45px">💨</span></div>
+   <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(55px, 8vw, 85px);gap:10px;pointer-events:none">👽<span style="font-size:clamp(40px, 6vw, 65px)">🛸</span><span style="font-size:clamp(30px, 4vw, 45px)">💨</span></div>
    <div class="grid3" id="g6" style="align-content:end;position:absolute;inset:auto 0 0 0;height:auto"></div>
  </div></div>
 </div></div>`,
   init(r) {
     const g = $('#g6', r), fb = $('#f6', r); let picked = null;
     [['🔧', 'مفتاح ربط'], ['🪢', 'حبل متين'], ['🔋', 'بطارية طاقة'], ['🧲', 'مغناطيس'], ['🚀', 'صاروخي'], ['🩹', 'شريط لاصق']].forEach(([em, n]) => {
-      const c = document.createElement('div'); c.className = 'card'; c.style.fontSize = '14px'; c.innerHTML = `<div class="em" style="font-size:38px">${em}</div>${n}`;
+      const c = document.createElement('div'); c.className = 'card'; c.style.fontSize = '13px'; c.innerHTML = `<div class="em">${em}</div>${n}`;
       c.onclick = () => {
         $$('.card', g).forEach(x => x.classList.remove('ok'));
         c.classList.add('ok'); picked = n; chime([600]);
@@ -1378,13 +1463,13 @@ PAGES.push({
    <div class="fb" id="f7"></div>
  </div>
  <div class="col main"><div class="stage night" id="s7" style="display:flex;align-items:center;justify-content:center">
-   <div id="dev7" style="text-align:center;font-size:76px;line-height:1.15"></div>
+   <div id="dev7" style="text-align:center;font-size:clamp(50px, 7vw, 76px);line-height:1.15"></div>
  </div></div>
 </div></div>`,
   init(r) {
     const fb = $('#f7', r), dev = $('#dev7', r), t = $('#t7', r);
     const pick = { p: null, a: null, b: null }; let attempts = 0;
-    const draw = () => dev.innerHTML = `<div>${pick.a || '📡'}</div><div>${pick.b || '📦'}</div><div style="font-size:46px">${pick.p || '🔋'}</div>`;
+    const draw = () => dev.innerHTML = `<div>${pick.a || '📡'}</div><div>${pick.b || '📦'}</div><div style="font-size:42px">${pick.p || '🔋'}</div>`;
     draw();
     t.append(chipRow(['🔋', '☀️', '⚡', '🌟'], v => { pick.p = v; draw(); }, 'مصدر الطاقة'));
     t.append(chipRow(['📡', '🛰️', '📶', '🎈'], v => { pick.a = v; draw(); }, 'الهوائي'));
@@ -1415,9 +1500,9 @@ PAGES.push({
    <div class="fb" id="f8"></div>
  </div>
  <div class="col main">
-   <div class="stage" id="s8" style="background:#fff;display:flex;flex-direction:column;gap:8px;padding:12px">
-     <div id="strip8" style="display:flex;gap:10px;flex:1"></div>
-     <div id="ends8" style="display:flex;gap:8px"></div>
+   <div class="stage" id="s8" style="background:#fff;display:flex;flex-direction:column;gap:8px;padding:10px">
+     <div id="strip8" style="display:flex;gap:8px;flex:1"></div>
+     <div id="ends8" style="display:flex;gap:6px"></div>
    </div>
  </div>
 </div></div>`,
@@ -1428,9 +1513,9 @@ PAGES.push({
       strip.innerHTML = '';
       order.forEach((em, i) => {
         const c = document.createElement('div'); c.className = 'card'; c.style.flex = '1';
-        c.innerHTML = `<div class="em" style="font-size:60px">${em}</div>
-        <div class="row" style="justify-content:center"><button class="btn ghost" data-d="1" style="padding:4px 12px">▶</button>
-        <button class="btn ghost" data-d="-1" style="padding:4px 12px">◀</button></div>`;
+        c.innerHTML = `<div class="em">${em}</div>
+        <div class="row" style="justify-content:center"><button class="btn ghost" data-d="1" style="padding:3px 10px">▶</button>
+        <button class="btn ghost" data-d="-1" style="padding:3px 10px">◀</button></div>`;
         c.querySelectorAll('button').forEach(b => b.onclick = e => {
           e.stopPropagation();
           const j = i + +b.dataset.d; if (j < 0 || j > 2) return;
@@ -1527,8 +1612,8 @@ PAGES.push({
       s.onclick = () => { cfg.winC = c; draw(); }; cw2.appendChild(s);
     });
     t.append(cw, cw2);
-    t.append(chipRow(['⭐', '🌟', '🪐', '🌙', '😀', '🐱', '🌈', '❤️', '🔥', '🦄'], v => tool = v, 'ملصقات زينة — اضغط ثم اضغط بجانب الصاروخ'));
-    placer(stage, () => tool, 36);
+    t.append(chipRow(['⭐', '🌟', '🪐', '🌙', '😀', '🐱', '🌈', '❤️', '🔥', '🦄'], v => tool = v, 'ملصقات زينة — اضغط ثم ضعها بجانب الصاروخ'));
+    placer(stage, () => tool, 34);
     $('#done10', r).onclick = () => awardStar(10, fb, 'صاروخك يشبهك أنت فقط! هذا هو الإبداع الحقيقي ⭐');
   }
 });
@@ -1544,12 +1629,12 @@ PAGES.push({
    <div class="row" id="rd11"></div>
    <div class="fb" id="f11"></div>
  </div>
- <div class="col main"><div class="stage night" id="s11" style="display:flex;align-items:center;justify-content:space-around"></div></div>
+ <div class="col main"><div class="stage night" id="s11" style="display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap"></div></div>
 </div></div>`,
   init(r) {
     const stage = $('#s11', r), fb = $('#f11', r); const win = Math.floor(Math.random() * 5); let n = 0, done = false;
     for (let i = 0; i < 5; i++) {
-      const d = document.createElement('div'); d.style.cssText = 'font-size:68px;cursor:pointer;user-select:none;transition:.3s';
+      const d = document.createElement('div'); d.style.cssText = 'font-size:clamp(48px, 6vw, 68px);cursor:pointer;user-select:none;transition:.3s';
       d.textContent = '☁️';
       d.onclick = () => {
         if (done || d.dataset.o) return; n++; $('#tr11', r).textContent = n; d.dataset.o = 1;
@@ -1578,7 +1663,7 @@ PAGES.push({
    <div class="fb" id="f12"></div>
  </div>
  <div class="col main"><div class="stage" id="s12">
-   <div id="alien" style="position:absolute;left:50%;top:24%;transform:translateX(-50%);font-size:90px">👾</div>
+   <div id="alien" style="position:absolute;left:50%;top:20%;transform:translateX(-50%);font-size:clamp(60px, 8vw, 88px)">👾</div>
    <div class="grid3" id="g12" style="position:absolute;inset:auto 0 0 0;height:auto"></div>
  </div></div>
 </div></div>`,
@@ -1628,7 +1713,7 @@ PAGES.push({
     stage.appendChild(p);
     let tool = null;
     $('#t13', r).append(chipRow(['🌲', '🏠', '🏞️', '⛰️', '🌙'], v => tool = v, 'العناصر — اضغط ثم ضعها على الكوكب'));
-    placer(stage, () => tool, 44);
+    placer(stage, () => tool, 40);
     $('#rec13', r).append(recorder(), readBtn('كوّن كوكبك كما تحب، ثم أخبرني ماذا يعيش فيه.'));
     $('#done13', r).onclick = () => {
       if ($$('.item', stage).length < 3) return flash(fb, 'ضع ثلاثة عناصر على الأقل على كوكبك 🌍', true);
@@ -1648,9 +1733,9 @@ PAGES.push({
    <div class="fb" id="f14"></div>
  </div>
  <div class="col main"><div class="stage" id="s14">
-   <div style="position:absolute;left:6%;top:72%;font-size:48px">🐰</div>
-   <div style="position:absolute;left:84%;top:16%;font-size:48px">🚀</div>
-   <div style="position:absolute;left:46%;top:46%;font-size:56px">🪨</div>
+   <div style="position:absolute;left:6%;top:72%;font-size:clamp(36px, 5vw, 48px)">🐰</div>
+   <div style="position:absolute;left:84%;top:16%;font-size:clamp(36px, 5vw, 48px)">🚀</div>
+   <div style="position:absolute;left:46%;top:46%;font-size:clamp(40px, 6vw, 56px)">🪨</div>
    <div style="position:absolute;left:8%;top:78%;width:80%;height:3px;background:repeating-linear-gradient(90deg,#94a3b8 0 12px,transparent 12px 24px);transform:rotate(-32deg);transform-origin:left"></div>
    <canvas id="cv14" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
  </div></div>
@@ -1725,12 +1810,12 @@ PAGES.push({
    <div class="row"><button class="btn" id="done16">بطاقتي جاهزة</button><button class="btn ghost" id="print16">🖨️ اطبع البطاقة</button></div>
    <div class="fb" id="f16"></div>
  </div>
- <div class="col main"><div class="stage" id="s16" style="padding:12px;display:flex">
-   <div id="card16" style="flex:1;position:relative;border-radius:20px;background:#38cbfd;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,0.1)">
-     <div style="font-family:'Baloo Bhaijaan 2';font-size:32px;color:#fff;text-shadow:0 3px 6px rgba(0,0,0,0.2)">🎊 حفلة في الفضاء 🎊</div>
-     <div id="cake16" style="font-size:68px">🎂</div>
-     <div id="chars16" style="font-size:42px">🧑‍🚀👽🤖</div>
-     <div id="txt16" style="background:#fff;border-radius:14px;padding:8px 18px;font-weight:800;max-width:85%;text-align:center;color:var(--ink);box-shadow:0 4px 10px rgba(0,0,0,0.08)">أدعوكم إلى حفلتي المميزة على القمر!</div>
+ <div class="col main"><div class="stage" id="s16" style="padding:10px;display:flex">
+   <div id="card16" style="flex:1;position:relative;border-radius:18px;background:#38cbfd;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;overflow:hidden;box-shadow:0 6px 16px rgba(0,0,0,0.1)">
+     <div style="font-family:'Baloo Bhaijaan 2';font-size:clamp(22px, 3.5vw, 30px);color:#fff;text-shadow:0 3px 6px rgba(0,0,0,0.2)">🎊 حفلة في الفضاء 🎊</div>
+     <div id="cake16" style="font-size:clamp(45px, 6vw, 65px)">🎂</div>
+     <div id="chars16" style="font-size:clamp(30px, 4vw, 40px)">🧑‍🚀👽🤖</div>
+     <div id="txt16" style="background:#fff;border-radius:12px;padding:6px 14px;font-weight:800;max-width:88%;text-align:center;color:var(--ink);box-shadow:0 4px 10px rgba(0,0,0,0.08)">أدعوكم إلى حفلتي المميزة على القمر!</div>
    </div>
  </div></div>
 </div></div>`,
@@ -1746,7 +1831,7 @@ PAGES.push({
     t.append(chipRow(['🧑‍🚀👽🤖', '👩‍🚀🐰🌟', '👽👾🛸', '🤖🐱🚀'], v => $('#chars16', r).textContent = v, 'الشخصيات'));
     let tool = null;
     t.append(chipRow(['🎈', '🎊', '✨', '🎁', '⭐', '🌙'], v => tool = v, 'الزينة — اضغط ثم ضعها على البطاقة'));
-    placer(card, () => tool, 34);
+    placer(card, () => tool, 32);
     $('#party', r).oninput = e => $('#txt16', r).textContent = e.target.value || 'أدعوكم إلى حفلتي المميزة على القمر!';
     $('#print16', r).onclick = () => window.print();
     $('#done16', r).onclick = () => awardStar(16, fb, 'دعوة رائعة! أنت الآن جاهز لاستقبال أصدقائك في الفضاء ⭐');
@@ -1756,14 +1841,14 @@ PAGES.push({
 /* ============ 17. التتويج والختام ============ */
 PAGES.push({
   html: `<div class="pg dark"><div class="cover">
-  <div class="float" style="font-size:80px">🏅</div>
+  <div class="float" style="font-size:clamp(55px, 8vw, 80px)">🏅</div>
   <h1 id="endTitle">قائد الرحلة الفضائية</h1>
-  <div class="sub" id="endName" style="font-size:22px"></div>
-  <div class="mini" style="max-width:650px;text-align:center;font-size:16px;background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.3)">
+  <div class="sub" id="endName" style="font-size:clamp(16px, 2vw, 22px)"></div>
+  <div class="mini" style="max-width:650px;text-align:center;font-size:clamp(13px, 1.4vw, 16px);background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.3)">
     أنقذنا الكوكب الأزرق معًا! تدرّبت بنجاح على <u>الإبداع والابتكار</u>، و<u>المثابرة</u>، و<u>المرونة والتكيّف</u>.
   </div>
-  <div id="stars17" style="font-size:38px;letter-spacing:6px"></div>
-  <div class="row" style="justify-content:center;gap:12px">
+  <div id="stars17" style="font-size:clamp(26px, 4vw, 38px);letter-spacing:4px"></div>
+  <div class="row" style="justify-content:center;gap:10px">
     <button class="btn mint" id="cheer">🎉 احتفال النصر</button>
     <button class="btn ghost" id="printC">🖨️ طباعة الشهادة</button>
   </div>
@@ -1792,7 +1877,7 @@ PAGES.push({
 </script>
 
 <script>
-/* ============ تشغيل المجلة والتنقل التفاعلي ============ */
+/* ============ تشغيل المجلة والتنقل التفاعلي المتجاوب ============ */
 const book = $('#book'), track = $('#track');
 for (let i = 0; i < 16; i++) {
   if (i) track.insertAdjacentHTML('beforeend', '<div class="link"></div>');
@@ -1829,7 +1914,7 @@ function turn(dir) {
   const moving = dir > 0 ? sheets[cur] : sheets[n];
   moving.classList.add('turning');
   chime([400, 500]);
-  setTimeout(() => moving.classList.remove('turning'), 900);
+  setTimeout(() => moving.classList.remove('turning'), 850);
   cur = n;
   show();
 }
