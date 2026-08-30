@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>🚀 مغامرة إنقاذ الكوكب الأزرق — المجلة الإلكترونية التفاعلية</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+<title>🚀 مغامرة إنقاذ الكوكب الأزرق — مجلة الكترونية تفاعلية </title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -100,12 +100,12 @@ body::before {
 }
 
 /* ===== الهيكل العام الذكي والمتجاوب (Responsive Shell) ===== */
+/* نستخدم متغير CSS يُحدَّث بـ JS لتجنب انهيار التخطيط عند ظهور لوحة المفاتيح */
 .shell {
   position: relative;
   width: 100%;
   max-width: 1240px;
-  height: 100vh;
-  height: 100dvh;
+  height: var(--vvh, 100svh);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -114,6 +114,76 @@ body::before {
   padding: 8px 12px;
   z-index: 1;
 }
+
+/* ===== نافذة إدخال الاسم المنبثقة المستقلة (Name Modal - Keyboard Safe) ===== */
+.name-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 56, 0.75);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+}
+.name-modal-box {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+.name-modal-box .em { font-size: 52px; line-height: 1; }
+.name-modal-box h3 {
+  font-family: 'Baloo Bhaijaan 2';
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--ink);
+  margin: 0;
+}
+.name-modal-box p {
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748b;
+  margin: 0;
+}
+.name-modal-box input[type=text] {
+  width: 100%;
+  font-size: 16px; /* 16px يمنع التكبير التلقائي على iOS */
+  font-weight: 700;
+  text-align: center;
+  border: 2.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 10px 14px;
+  min-height: 48px;
+  outline: 0;
+  background: #f8fafc;
+  color: var(--ink);
+  font-family: 'Tajawal';
+}
+.name-modal-box input[type=text]:focus {
+  border-color: var(--purple-dark);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(109,40,217,0.15);
+}
+.name-modal-box .modal-btns {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+.name-modal-box .modal-btns .btn {
+  flex: 1;
+  min-height: 46px;
+  font-size: 15px;
+}
+
 
 /* ===== شريط التتبع والعداد العلوي (HUD) ===== */
 .hud {
@@ -783,6 +853,25 @@ canvas { touch-action: none; display: block; }
 <div class="bg-cloud c1">☁️</div>
 <div class="bg-cloud c2">☁️</div>
 
+<!-- ======== إصلاح لوحة المفاتيح على الموبايل (Keyboard Layout Fix) ======== -->
+<script>
+(function() {
+  /* نستخدم visualViewport API لتثبيت ارتفاع shell وعدم السماح للوحة المفاتيح
+     بإعادة تدفق عناصر الصفحة — هذا هو الإصلاح الاحترافي لمشكلة iOS/Android */
+  function setVVH() {
+    const h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    document.documentElement.style.setProperty('--vvh', h + 'px');
+  }
+  setVVH();
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', setVVH);
+    window.visualViewport.addEventListener('scroll', setVVH);
+  }
+  window.addEventListener('resize', setVVH);
+})();
+</script>
+
+
 <div class="shell">
   <!-- HUD العلوي للتتبع والنجوم المتجاوب -->
   <div class="hud">
@@ -1130,21 +1219,62 @@ PAGES.push({
     <span class="tag">🌌 الفضاء والنجوم</span><span class="tag">👶 5–6 سنوات</span>
     <span class="tag">🎮 16 نشاطًا تفاعليًا</span><span class="tag">🏅 وسام بطل الفضاء</span>
   </div>
-  <div class="row" style="justify-content:center;margin-top:8px">
-    <input type="text" id="kidName" placeholder="اكتب اسمك يا بطل الفضاء">
+  <div id="coverName" style="background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.4);border-radius:999px;padding:6px 20px;font-weight:800;color:#fffae6;font-size:clamp(13px,1.8vw,17px);display:none"></div>
+  <div class="row" style="justify-content:center;gap:8px">
+    <button class="btn ghost" id="nameBtn" style="font-size:15px">✍️ اكتب اسمك</button>
     <button class="btn mint" id="startBtn">ابدأ الرحلة ◀</button>
   </div>
   <div class="fb" id="coverFb" style="max-width:520px"></div>
 </div></div>`,
   init(r) {
     const fb = $('#coverFb', r);
+    const nameDisplay = $('#coverName', r);
+
+    /* زر فتح نافذة إدخال الاسم المنبثقة الآمنة */
+    $('#nameBtn', r).onclick = () => {
+      const modal = document.createElement('div');
+      modal.className = 'name-modal';
+      modal.innerHTML = `
+        <div class="name-modal-box">
+          <div class="em">🧑‍🚀</div>
+          <h3>من أنت يا بطل الفضاء؟</h3>
+          <p>اكتب اسمك لتحصل على وسام شرف خاص باسمك!</p>
+          <input type="text" id="modalName" placeholder="اكتب اسمك هنا…" maxlength="30" autocomplete="off">
+          <div class="modal-btns">
+            <button class="btn ghost" id="skipModal">تخطّي</button>
+            <button class="btn mint" id="saveModal">حفظ الاسم ✓</button>
+          </div>
+        </div>`;
+      document.body.appendChild(modal);
+
+      const inp = modal.querySelector('#modalName');
+      /* تأخير بسيط لضمان رسم العنصر أولاً قبل التركيز — يمنع القفز على iOS */
+      setTimeout(() => inp.focus(), 150);
+
+      const save = () => {
+        const v = inp.value.trim();
+        State.childName = v;
+        if (v) {
+          nameDisplay.textContent = '👋 أهلاً يا ' + v + '!';
+          nameDisplay.style.display = '';
+        }
+        modal.remove();
+      };
+      modal.querySelector('#saveModal').onclick = save;
+      modal.querySelector('#skipModal').onclick = () => modal.remove();
+      /* إغلاق عند الضغط خارج الصندوق */
+      modal.onclick = e => { if (e.target === modal) modal.remove(); };
+    };
+
     $('#startBtn', r).onclick = () => {
-      State.childName = $('#kidName', r).value.trim();
-      flash(fb, State.childName ? `أهلًا بك يا ${State.childName}! غيث ينتظرك في الصفحة التالية 🌟` : 'هيا بنا! اضغط زر «التالي» للانطلاق في الرحلة 🌟');
       chime([523, 659, 784]);
+      flash(fb, State.childName
+        ? `أهلًا بك يا ${State.childName}! غيث ينتظرك في الصفحة التالية 🌟`
+        : 'هيا بنا! اضغط زر «التالي» للانطلاق في الرحلة 🌟');
     };
   }
 });
+
 
 PAGES.push({
   html: `<div class="pg"><div class="pg-head"><span class="badge">المقدمة</span><h2>رسالة استغاثة من الفضاء 🛰️</h2></div>
