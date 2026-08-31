@@ -451,7 +451,7 @@ PAGES.push({
     const cfg = { nose: 0, fin: 0, eng: 0, win: 0, body: '#ff6b81', noseC: '#ffc83b', winC: '#42e3b4', solar: false, arm: false, fire: false };
     const stage = $('#s1', r), fb = $('#f1', r);
     const holder = document.createElement('div');
-    holder.style.cssText = 'width:60%;max-width:140px;height:95%;position:relative;pointer-events:none';
+    holder.style.cssText = 'width:55%;max-width:130px;height:90%;pointer-events:none;display:flex;align-items:center;';
     stage.appendChild(holder);
     const draw = () => holder.innerHTML = rocketSVG(cfg);
     draw();
@@ -693,7 +693,7 @@ PAGES.push({
    </div></div>
 </div></div>`,
   init(r) {
-    const g = $('#g6', r), fb = $('#f6', r); let picked = null;
+    const g = $('#g6', r), fb = $('#f6', r), alienDiv = r.querySelector('#alien') || r; let picked = null;
     [['🔧', 'مفتاح ربط'], ['🪢', 'حبل متين'], ['🔋', 'بطارية طاقة'], ['🧲', 'مغناطيس'], ['🚀', 'صاروخي'], ['🩹', 'شريط لاصق']].forEach(([em, n]) => {
       const c = document.createElement('div'); c.className = 'card'; c.style.fontSize = '12px'; c.innerHTML = `<div class="em">${em}</div>${n}`;
       c.onclick = () => {
@@ -858,7 +858,7 @@ PAGES.push({
   init(r) {
     const stage = $('#s10', r), fb = $('#f10', r);
     const cfg = { nose: 1, fin: 2, eng: 1, win: 0, body: '#ffffff', noseC: '#ffffff', winC: '#ffffff' };
-    const holder = document.createElement('div'); holder.style.cssText = 'width:60%;max-width:130px;height:95%;pointer-events:none'; stage.appendChild(holder);
+    const holder = document.createElement('div'); holder.style.cssText = 'width:55%;max-width:130px;height:90%;pointer-events:none;display:flex;align-items:center;'; stage.appendChild(holder);
     const draw = () => holder.innerHTML = rocketSVG(cfg); draw();
     let tool = null; const t = $('#t10', r);
     const cw = document.createElement('div'); cw.className = 'tools'; cw.innerHTML = '<div class="lbl">تلوين الصاروخ</div>';
@@ -1066,7 +1066,7 @@ PAGES.push({
  <div class="col side">
    ${say('انتهت الرحلة بنجاح! صمّم <b>بطاقة دعوة</b> لحفلة الفضاء: اختر اللون والزينة والكعكة والشخصيات.')}
    <div id="t16"></div>
-   <input type="text" id="party" placeholder="نص الدعوة: أدعوكم إلى…">
+   <input type="text" id="party" placeholder="نص الدعوة…" style="width:100%;max-width:100%">
    <div class="row"><button class="btn" id="done16">بطاقتي جاهزة</button><button class="btn ghost" id="print16">🖨️ اطبع البطاقة</button></div>
    <div class="fb" id="f16"></div>
  </div>
