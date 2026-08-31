@@ -593,7 +593,7 @@ PAGES.push({
    <div class="row" id="rd4"></div>
    <div class="fb" id="f4"></div>
  </div>
- <div class="col main"><div class="stage" id="s4" style="display:flex;align-items:center;justify-content:center;padding:6px"><div class="grid3" id="g4"></div></div></div>
+ <div class="col main"><div class="stage" id="s4" style="display:flex;align-items:center;justify-content:center;overflow:auto"><div class="grid3" id="g4" style="width:100%"></div></div></div>
 </div></div>`,
   init(r) {
     const g = $('#g4', r), fb = $('#f4', r);
@@ -687,10 +687,12 @@ PAGES.push({
    <button class="btn" id="done6">أخبرت غيث بفكرتي</button>
    <div class="fb" id="f6"></div>
  </div>
- <div class="col main"><div class="stage" id="s6" style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:6px">
-     <div style="font-size:clamp(32px,6vw,48px);text-align:center;line-height:1;margin-top:2px">👽 <span style="font-size:clamp(24px,4.5vw,36px)">🛸</span></div>
-     <div class="grid3" id="g6"></div>
-   </div></div>
+ <div class="col main">
+   <div style="text-align:center;font-size:clamp(32px,6vw,46px);line-height:1;flex:0 0 auto">👽 🛸</div>
+   <div class="stage" id="s6" style="display:flex;align-items:center;justify-content:center">
+     <div class="grid3" id="g6" style="width:100%"></div>
+   </div>
+ </div>
 </div></div>`,
   init(r) {
     const g = $('#g6', r), fb = $('#f6', r), alienDiv = r.querySelector('#alien') || r; let picked = null;
@@ -813,7 +815,7 @@ PAGES.push({
    <div class="row" id="rd9"></div>
    <div class="fb" id="f9"></div>
  </div>
- <div class="col main"><div class="stage" id="s9" style="display:flex;align-items:center;justify-content:center;padding:6px"><div class="grid3" id="g9"></div></div></div>
+ <div class="col main"><div class="stage" id="s9" style="display:flex;align-items:center;justify-content:center"><div class="grid3" id="g9" style="width:100%"></div></div></div>
 </div></div>`,
   init(r) {
     const g = $('#g9', r), fb = $('#f9', r); let round = 1;
@@ -993,11 +995,11 @@ PAGES.push({
    <div class="fb" id="f14"></div>
  </div>
  <div class="col main"><div class="stage" id="s14">
-   <div style="position:absolute;left:6%;top:68%;font-size:clamp(28px,4vw,38px);z-index:2;pointer-events:none">🐰</div>
-   <div style="position:absolute;left:82%;top:12%;font-size:clamp(28px,4vw,38px);z-index:2;pointer-events:none">🚀</div>
-   <div style="position:absolute;left:45%;top:42%;font-size:clamp(32px,5vw,46px);z-index:2;pointer-events:none">🪨</div>
+   <div style="position:absolute;left:6%;top:65%;font-size:clamp(26px,4vw,36px);z-index:3;pointer-events:none">🐰</div>
+   <div style="position:absolute;left:80%;top:10%;font-size:clamp(26px,4vw,36px);z-index:3;pointer-events:none">🚀</div>
+   <div style="position:absolute;left:44%;top:40%;font-size:clamp(28px,4.5vw,42px);z-index:3;pointer-events:none">🪨</div>
    <div style="position:absolute;left:8%;top:75%;width:80%;height:3px;background:repeating-linear-gradient(90deg,#94a3b8 0 10px,transparent 10px 20px);transform:rotate(-30deg);transform-origin:left;pointer-events:none"></div>
-   <canvas id="cv14" style="position:absolute;inset:0;width:100%;height:100%;z-index:3"></canvas>
+   <canvas id="cv14" style="position:absolute;inset:0;width:100%;height:100%;z-index:4"></canvas>
  </div></div>
 </div></div>`,
   init(r) {
@@ -1066,7 +1068,7 @@ PAGES.push({
  <div class="col side">
    ${say('انتهت الرحلة بنجاح! صمّم <b>بطاقة دعوة</b> لحفلة الفضاء: اختر اللون والزينة والكعكة والشخصيات.')}
    <div id="t16"></div>
-   <input type="text" id="party" placeholder="نص الدعوة…" style="width:100%;max-width:100%">
+   <input type="text" id="party" placeholder="نص الدعوة…">
    <div class="row"><button class="btn" id="done16">بطاقتي جاهزة</button><button class="btn ghost" id="print16">🖨️ اطبع البطاقة</button></div>
    <div class="fb" id="f16"></div>
  </div>
