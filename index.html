@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes, viewport-fit=cover">
+<meta name="theme-color" content="#0f172a">
+<title>🚀 مغامرة إنقاذ الكوكب الأزرق</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+/* Visual Viewport Fix — يُنفَّذ قبل كل شيء */
+!function(){function u(){var h=window.visualViewport?window.visualViewport.height:window.innerHeight;document.documentElement.style.setProperty("--vvh",h+"px")}u();window.visualViewport&&(window.visualViewport.addEventListener("resize",u),window.visualViewport.addEventListener("scroll",u));window.addEventListener("resize",u)}();
+</script>
+</head>
+<body>
+
+<div class="bg-cloud c1">☁️</div>
+<div class="bg-cloud c2">☁️</div>
+
+<div class="shell">
+  <div class="hud">
+    <h1>🚀 مغامرة إنقاذ الكوكب الأزرق</h1>
+    <div class="track" id="track"></div>
+    <div class="count"><span id="starCount">0</span>/16 ⭐</div>
+  </div>
+
+  <div class="book-wrap">
+    <div class="book" id="book"></div>
+  </div>
+
+  <div class="nav">
+    <button class="btn ghost" id="prev">▶ السابق</button>
+    <div class="pgno" id="pgno">1 / 1</div>
+    <button class="btn" id="next">التالي ◀</button>
+  </div>
+
+  <div class="hint">استخدم أسهم لوحة المفاتيح ← → للتنقل</div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
